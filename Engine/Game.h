@@ -24,6 +24,8 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "TileMap.h"
+#include "Player.h"
+#include "Level.h"
 
 class Game
 {
@@ -44,5 +46,7 @@ private:
 	/********************************/
 	/*  User Variables              */
 	TileMap tilemap;
+	Player guy;
+	Level level;
 	/********************************/
 };

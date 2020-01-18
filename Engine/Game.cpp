@@ -24,23 +24,27 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
-{
-}
+	gfx( wnd ),
+	guy( Vei2{ 10,10 } )
+{}
 
 void Game::Go()
 {
-	gfx.BeginFrame();	
+	gfx.BeginFrame();
+	tilemap.Reset();
 	UpdateModel();
 	ComposeFrame();
+	tilemap.Draw( gfx );
 	gfx.EndFrame();
 }
 
 void Game::UpdateModel()
 {
+	guy.Update( wnd.kbd,wnd.mouse,1.0f );
 }
 
 void Game::ComposeFrame()
 {
-	tilemap.Draw( gfx );
+	level.Draw( tilemap );
+	guy.Draw( tilemap );
 }
