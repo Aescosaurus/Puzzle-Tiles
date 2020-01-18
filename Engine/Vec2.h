@@ -84,6 +84,10 @@ public:
 	{
 		return x * x + y * y;
 	}
+	constexpr T GetAngle() const
+	{
+		return( std::atan2( y,x ) );
+	}
 
 	constexpr Vec2_& Normalize()
 	{
@@ -118,6 +122,11 @@ public:
 	static constexpr Vec2_ Zero()
 	{
 		return( Vec2_<T>{ T( 0.0 ),T( 0.0 ) } );
+	}
+	static constexpr Vec2_ FromAngle( float angle )
+	{
+		return( Vec2_{ T( std::cos( angle ) ),
+			T( std::sin( angle ) ) } );
 	}
 
 	constexpr Vec2_ X() const

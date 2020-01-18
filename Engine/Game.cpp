@@ -25,7 +25,7 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	guy( Vei2{ 10,10 } )
+	guy( Vei2{ 10,10 },level )
 {}
 
 void Game::Go()
@@ -47,4 +47,6 @@ void Game::ComposeFrame()
 {
 	level.Draw( tilemap );
 	guy.Draw( tilemap );
+
+	guy.DrawFlashlight( tilemap ); // This must be at end.
 }

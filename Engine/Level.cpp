@@ -11,7 +11,13 @@ Level::Level()
 	{
 		for( int x = 0; x < size; ++x )
 		{
-			tiles.emplace_back( Colors::MakeRGB( r,g,b ) );
+			tiles.emplace_back( Tile{ TileType::Floor,
+				Colors::MakeRGB( r,g,b ) } );
+			if( x == 0 || x == size - 1 ||
+				y == 0 || y == size - 1 )
+			{
+				tiles.back().type = TileType::Wall;
+			}
 
 			r += int( Random{ -delta,delta } );
 			g += int( Random{ -delta,delta } );
@@ -33,7 +39,12 @@ void Level::Draw( TileMap& map ) const
 	{
 		for( int x = 0; x < size; ++x )
 		{
-			map.PutPixel( x,y,tiles[y * size + x] );
+			map.PutPixel( x,y,tiles[y * size + x].c );
 		}
 	}
+}
+
+Level::TileType Level::GetTile( const Vei2& pos ) const
+{
+	return( tiles[pos.y * size + pos.x].type );
 }
