@@ -1,9 +1,8 @@
 #include "Player.h"
 
-Player::Player( const Vei2& pos,const Level& level )
+Player::Player( const Vei2& pos )
 	:
-	pos( pos ),
-	flashlight( level )
+	pos( pos )
 {}
 
 void Player::Update( const Keyboard& kbd,const Mouse& mouse,float dt )
@@ -15,16 +14,9 @@ void Player::Update( const Keyboard& kbd,const Mouse& mouse,float dt )
 	if( kbd.KeyIsPressed( 'D' ) ) ++vel.x;
 
 	pos += Vec2( vel ).GetNormalized() * speed;
-
-	flashlight.Update( pos,Vec2( mouse.GetPos() ) );
 }
 
 void Player::Draw( TileMap& map ) const
 {
 	map.PutPixel( int( pos.x ),int( pos.y ),Colors::White );
-}
-
-void Player::DrawFlashlight( TileMap& map ) const
-{
-	flashlight.Draw( map );
 }
