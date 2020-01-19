@@ -28,6 +28,8 @@ public:
 	void Draw( TileMap& map ) const;
 
 	TileType GetTile( const Vei2& pos ) const;
+	// Return random spot on ground.
+	Vei2 GetValidSpot() const;
 private:
 	void DrawRect( const RectI& rect );
 private:

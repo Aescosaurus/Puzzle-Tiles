@@ -25,7 +25,7 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	guy( Vei2{ 10,10 } )
+	guy( level.GetValidSpot() )
 {}
 
 void Game::Go()

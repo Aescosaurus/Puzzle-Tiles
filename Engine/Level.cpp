@@ -15,19 +15,35 @@ Level::Level()
 	}
 
 	// Set up random rooms.
-	const int nRooms = int( Random{ 4,7 } );
+	const int nRooms = int( Random{ 11,15 } );
 	std::vector<RectI> rooms;
-	for( int i = 0; i < nRooms; ++i )
+	for( int i = 0; i < nRooms; i )
 	{
 		const auto randSize = Vei2{
-			int( Random{ 3,6 } ),
-			int( Random{ 3,6 } )
+			int( Random{ 4,7 } ),
+			int( Random{ 4,7 } )
 		};
 		const auto randPos = Vei2{
 			int( Random{ 1,size - randSize.x - 1 } ),
 			int( Random{ 1,size - randSize.y - 1 } )
 		};
-		rooms.emplace_back( RectI{ randPos,randSize.x,randSize.y } );
+
+		auto testRect = RectI{ randPos,randSize.x,randSize.y };
+		bool overlapping = false;
+		if( int( rooms.size() ) == 0 ) overlapping = true;
+		for( const auto& room : rooms )
+		{
+			if( room.IsOverlappingWith( testRect ) )
+			{
+				overlapping = true;
+				break;
+			}
+		}
+		if( overlapping )
+		{
+			rooms.emplace_back( RectI{ randPos,randSize.x,randSize.y } );
+			++i;
+		}
 	}
 
 	// Fill in random rooms.
@@ -57,6 +73,19 @@ void Level::Draw( TileMap& map ) const
 Level::TileType Level::GetTile( const Vei2& pos ) const
 {
 	return( tiles[pos.y * size + pos.x].type );
+}
+
+Vei2 Level::GetValidSpot() const
+{
+	auto randSpot = Vei2::Zero();
+	do
+	{
+		randSpot.x = int( Random{ 0,size - 1 } );
+		randSpot.y = int( Random{ 0,size - 1 } );
+	}
+	while( GetTile( randSpot ) != TileType::Floor );
+
+	return( randSpot );
 }
 
 void Level::DrawRect( const RectI& rect )

@@ -46,7 +46,7 @@ private:
 	/********************************/
 	/*  User Variables              */
 	TileMap tilemap;
-	Player guy;
 	Level level;
+	Player guy;
 	/********************************/
 };
