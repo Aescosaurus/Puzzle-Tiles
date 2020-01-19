@@ -3,33 +3,43 @@
 
 Level::Level()
 {
-	int r = int( Random{ 0,255 } );
-	int g = int( Random{ 0,255 } );
-	int b = int( Random{ 0,255 } );
-	const int delta = 20;
+	// Create initial array.
+	tiles.reserve( size * size );
 	for( int y = 0; y < size; ++y )
 	{
 		for( int x = 0; x < size; ++x )
 		{
-			tiles.emplace_back( Tile{ TileType::Floor,
-				Colors::MakeRGB( r,g,b ) } );
-			if( x == 0 || x == size - 1 ||
-				y == 0 || y == size - 1 )
-			{
-				tiles.back().type = TileType::Wall;
-			}
-
-			r += int( Random{ -delta,delta } );
-			g += int( Random{ -delta,delta } );
-			b += int( Random{ -delta,delta } );
-
-			if( r < 0 ) r = 0;
-			if( r > 255 ) r = 255;
-			if( g < 0 ) g = 0;
-			if( g > 255 ) g = 255;
-			if( b < 0 ) b = 0;
-			if( b > 255 ) b = 255;
+			tiles.emplace_back( Tile{ TileType::Wall,
+				Colors::Black } );
 		}
+	}
+
+	// Set up random rooms.
+	const int nRooms = int( Random{ 4,7 } );
+	std::vector<RectI> rooms;
+	for( int i = 0; i < nRooms; ++i )
+	{
+		const auto randSize = Vei2{
+			int( Random{ 3,6 } ),
+			int( Random{ 3,6 } )
+		};
+		const auto randPos = Vei2{
+			int( Random{ 1,size - randSize.x - 1 } ),
+			int( Random{ 1,size - randSize.y - 1 } )
+		};
+		rooms.emplace_back( RectI{ randPos,randSize.x,randSize.y } );
+	}
+
+	// Fill in random rooms.
+	for( const auto& room : rooms )
+	{
+		DrawRect( room );
+	}
+
+	// Randomize colors.
+	for( auto& tile : tiles )
+	{
+		tile.RandomizeColor();
 	}
 }
 
@@ -47,4 +57,46 @@ void Level::Draw( TileMap& map ) const
 Level::TileType Level::GetTile( const Vei2& pos ) const
 {
 	return( tiles[pos.y * size + pos.x].type );
+}
+
+void Level::DrawRect( const RectI& rect )
+{
+	for( int y = rect.top; y < rect.bottom; ++y )
+	{
+		for( int x = rect.left; x < rect.right; ++x )
+		{
+			tiles[y * size + x].type = TileType::Floor;
+		}
+	}
+}
+
+void Level::Tile::RandomizeColor()
+{
+	Color base = Colors::Black;
+	bool sameDeviation = false;
+	switch( type )
+	{
+	case TileType::Floor:
+		base = Colors::MakeRGB( 110,110,110 );
+		sameDeviation = true;
+		break;
+	case TileType::Wall:
+		base = Colors::MakeRGB( 20,20,50 );
+		sameDeviation = false;
+		break;
+	}
+
+	if( sameDeviation )
+	{
+		const auto amount = int( Random{ -deviation,deviation } );
+		c.SetR( base.GetR() + amount );
+		c.SetG( base.GetG() + amount );
+		c.SetB( base.GetB() + amount );
+	}
+	else
+	{
+		c.SetR( base.GetR() + int( Random{ -deviation,deviation } ) );
+		c.SetG( base.GetG() + int( Random{ -deviation,deviation } ) );
+		c.SetB( base.GetB() + int( Random{ -deviation,deviation } ) );
+	}
 }

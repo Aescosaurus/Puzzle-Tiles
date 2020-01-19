@@ -3,6 +3,7 @@
 #include <vector>
 #include "TileMap.h"
 #include "Vec2.h"
+#include "Rect.h"
 
 class Level
 {
@@ -16,6 +17,8 @@ private:
 	class Tile
 	{
 	public:
+		void RandomizeColor();
+	public:
 		TileType type;
 		Color c;
 	};
@@ -26,6 +29,9 @@ public:
 
 	TileType GetTile( const Vei2& pos ) const;
 private:
+	void DrawRect( const RectI& rect );
+private:
 	static constexpr int size = TileMap::size;
 	std::vector<Tile> tiles;
+	static constexpr int deviation = 20;
 };
