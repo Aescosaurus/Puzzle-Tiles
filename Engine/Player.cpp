@@ -1,8 +1,9 @@
 #include "Player.h"
 
-Player::Player( const Vei2& pos )
+Player::Player( const Vei2& pos,const Level& level )
 	:
-	pos( pos )
+	pos( pos ),
+	level( level )
 {}
 
 void Player::Update( const Keyboard& kbd,const Mouse& mouse,float dt )
@@ -13,7 +14,17 @@ void Player::Update( const Keyboard& kbd,const Mouse& mouse,float dt )
 	if( kbd.KeyIsPressed( 'A' ) ) --vel.x;
 	if( kbd.KeyIsPressed( 'D' ) ) ++vel.x;
 
-	pos += Vec2( vel ).GetNormalized() * speed;
+	const auto testMove = Vec2( vel ).GetNormalized() * speed * dt;
+	const auto testX = Vei2( pos + testMove.X() );
+	const auto testY = Vei2( pos + testMove.Y() );
+	if( level.GetTile( testX ) != Level::TileType::Wall )
+	{
+		pos += testMove.X();
+	}
+	if( level.GetTile( testY ) != Level::TileType::Wall )
+	{
+		pos += testMove.Y();
+	}
 }
 
 void Player::Draw( TileMap& map ) const

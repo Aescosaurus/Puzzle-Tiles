@@ -26,6 +26,7 @@
 #include "TileMap.h"
 #include "Player.h"
 #include "Level.h"
+#include "FrameTimer.h"
 
 class Game
 {
@@ -45,6 +46,7 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	FrameTimer ft;
 	TileMap tilemap;
 	Level level;
 	Player guy;

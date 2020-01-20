@@ -25,7 +25,7 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	guy( level.GetValidSpot() )
+	guy( level.GetValidSpot(),level )
 {}
 
 void Game::Go()
@@ -40,7 +40,8 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	guy.Update( wnd.kbd,wnd.mouse,1.0f );
+	const auto dt = ft.Mark();
+	guy.Update( wnd.kbd,wnd.mouse,dt );
 }
 
 void Game::ComposeFrame()
