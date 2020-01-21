@@ -20,5 +20,5 @@ private:
 	Vei2 pos;
 	Vei2 vel;
 	bool destroyed = false;
-	Timer moveSpeed = 0.02f;
+	Timer moveSpeed = 0.04f;
 };
