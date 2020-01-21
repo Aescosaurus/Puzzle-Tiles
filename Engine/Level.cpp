@@ -1,5 +1,6 @@
 #include "Level.h"
 #include "Random.h"
+#include "ColorStyle.h"
 
 Level::Level()
 {
@@ -101,31 +102,35 @@ void Level::DrawRect( const RectI& rect )
 
 void Level::Tile::RandomizeColor()
 {
-	Color base = Colors::Black;
-	bool sameDeviation = false;
+	// Color base = Colors::Black;
+	// bool sameDeviation = false;
+	ColorStyle col;
 	switch( type )
 	{
 	case TileType::Floor:
-		base = Colors::MakeRGB( 110,110,110 );
-		sameDeviation = true;
+		// base = Colors::MakeRGB( 110,110,110 );
+		// sameDeviation = true;
+		col = ColorStyle{ Colors::MakeRGB( 110,110,110 ),20,true };
 		break;
 	case TileType::Wall:
-		base = Colors::MakeRGB( 20,20,50 );
-		sameDeviation = false;
+		// base = Colors::MakeRGB( 20,20,50 );
+		// sameDeviation = false;
+		col = ColorStyle{ Colors::MakeRGB( 20,20,50 ),20 };
 		break;
 	}
 
-	if( sameDeviation )
-	{
-		const auto amount = int( Random{ -deviation,deviation } );
-		c.SetR( base.GetR() + amount );
-		c.SetG( base.GetG() + amount );
-		c.SetB( base.GetB() + amount );
-	}
-	else
-	{
-		c.SetR( base.GetR() + int( Random{ -deviation,deviation } ) );
-		c.SetG( base.GetG() + int( Random{ -deviation,deviation } ) );
-		c.SetB( base.GetB() + int( Random{ -deviation,deviation } ) );
-	}
+	// if( sameDeviation )
+	// {
+	// 	const auto amount = int( Random{ -deviation,deviation } );
+	// 	c.SetR( base.GetR() + amount );
+	// 	c.SetG( base.GetG() + amount );
+	// 	c.SetB( base.GetB() + amount );
+	// }
+	// else
+	// {
+	// 	c.SetR( base.GetR() + int( Random{ -deviation,deviation } ) );
+	// 	c.SetG( base.GetG() + int( Random{ -deviation,deviation } ) );
+	// 	c.SetB( base.GetB() + int( Random{ -deviation,deviation } ) );
+	// }
+	c = col.Generate();
 }

@@ -35,5 +35,5 @@ private:
 private:
 	static constexpr int size = TileMap::size;
 	std::vector<Tile> tiles;
-	static constexpr int deviation = 20;
+	// static constexpr int deviation = 20;
 };
