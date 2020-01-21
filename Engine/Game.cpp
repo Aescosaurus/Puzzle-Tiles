@@ -66,8 +66,9 @@ void Game::UpdateModel()
 		}
 	}
 
-	chili::remove_erase_if( enemies,std::mem_fn( &Enemy::IsDestroyed ) );
-	chili::remove_erase_if( arrows,std::mem_fn( &Arrow::IsDestroyed ) );
+	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
+	chili::remove_erase_if( arrows,isDestroyed );
+	chili::remove_erase_if( enemies,isDestroyed );
 }
 
 void Game::ComposeFrame()

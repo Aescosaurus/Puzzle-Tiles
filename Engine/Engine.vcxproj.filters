@@ -90,6 +90,9 @@
     <ClInclude Include="ChiliUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LevelObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXErr.cpp">
@@ -135,6 +138,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

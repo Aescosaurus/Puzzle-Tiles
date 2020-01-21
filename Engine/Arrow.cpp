@@ -2,7 +2,7 @@
 
 Arrow::Arrow( const Vei2& pos,const Vei2& vel )
 	:
-	pos( pos ),
+	LevelObject( pos ),
 	vel( vel )
 {}
 
@@ -23,19 +23,4 @@ void Arrow::Draw( TileMap& tilemap ) const
 	// 	Colors::MakeRGB( 190,190,120 ),0.5f );
 	tilemap.DrawLightCircle( pos.x,pos.y,2,
 		Colors::MakeRGB( 200,200,140 ),0.5f );
-}
-
-void Arrow::Destroy()
-{
-	destroyed = true;
-}
-
-Vei2 Arrow::GetPos()
-{
-	return( pos );
-}
-
-bool Arrow::IsDestroyed() const
-{
-	return( destroyed );
 }

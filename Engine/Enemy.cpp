@@ -2,7 +2,7 @@
 
 Enemy::Enemy( const Vei2& pos )
 	:
-	pos( pos )
+	LevelObject( pos )
 {}
 
 void Enemy::Update( const Vei2& playerPos,float dt )
@@ -27,19 +27,4 @@ void Enemy::Update( const Vei2& playerPos,float dt )
 void Enemy::Draw( TileMap& map ) const
 {
 	map.PutPixel( pos.x,pos.y,Colors::Red );
-}
-
-void Enemy::Destroy()
-{
-	destroyed = true;
-}
-
-const Vei2& Enemy::GetPos() const
-{
-	return( pos );
-}
-
-bool Enemy::IsDestroyed() const
-{
-	return( destroyed );
 }
