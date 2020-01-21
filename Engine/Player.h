@@ -7,6 +7,7 @@
 #include "Level.h"
 #include "Arrow.h"
 #include <vector>
+#include "Timer.h"
 
 class Player
 {
@@ -18,6 +19,8 @@ public:
 private:
 	static constexpr float speed = 12.0f;
 	const Level& level;
-	Vec2 pos;
+	Vei2 pos;
 	std::vector<Arrow> arrows;
+	Timer refire = 0.45f;
+	bool canMove = false;
 };

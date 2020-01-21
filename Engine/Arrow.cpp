@@ -3,8 +3,7 @@
 Arrow::Arrow( const Vec2& pos,const Vec2& target )
 	:
 	pos( pos ),
-	vel( ( target - ( pos * TileMap::tileSize ) +
-		Vec2::Left() * TileMap::padding ).GetNormalized() * speed )
+	vel( ( target - pos ) * speed )
 {}
 
 void Arrow::Update( float dt )
