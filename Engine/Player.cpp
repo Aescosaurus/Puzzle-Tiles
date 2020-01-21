@@ -25,9 +25,24 @@ void Player::Update( const Keyboard& kbd,const Mouse& mouse,float dt )
 	{
 		pos += testMove.Y();
 	}
+
+	if( mouse.LeftIsPressed() )
+	{
+		arrows.emplace_back( Arrow{ pos,mouse.GetPos() } );
+	}
+
+	for( auto& arrow : arrows )
+	{
+		arrow.Update( dt );
+	}
 }
 
 void Player::Draw( TileMap& map ) const
 {
 	map.PutPixel( int( pos.x ),int( pos.y ),Colors::White );
+
+	for( const auto& arrow : arrows )
+	{
+		arrow.Draw( map );
+	}
 }

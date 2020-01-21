@@ -3,11 +3,21 @@
 
 TileMap::TileMap()
 {
+	tiles.reserve( size * size );
 	for( int y = 0; y < size; ++y )
 	{
 		for( int x = 0; x < size; ++x )
 		{
 			tiles.emplace_back( Colors::Black );
+		}
+	}
+	lightMap.reserve( size * size );
+	for( int y = 0; y < size; ++y )
+	{
+		for( int x = 0; x < size; ++x )
+		{
+			lightMap.emplace_back( std::make_pair(
+				Colors::Black,globalBrightness ) );
 		}
 	}
 }
@@ -21,13 +31,29 @@ void TileMap::Draw( Graphics& gfx ) const
 			gfx.DrawRect( padding + x * tileSize,y * tileSize,
 				tileSize,tileSize,
 				tiles[y * size + x] );
+			// TODO: DrawRectAlpha with lightMap
 		}
 	}
 }
 
 void TileMap::PutPixel( int x,int y,Color c )
 {
-	tiles[y * size + x] = c;
+	if( x >= 0 && x < size &&
+		y >= 0 && y < size )
+	{
+		tiles[y * size + x] = c;
+	}
+}
+
+void TileMap::PutLight( int x,int y,Color c,float val )
+{
+	if( x >= 0 && x < size &&
+		y >= 0 && y < size )
+	{
+		auto& item = lightMap[y * size + x];
+		item.first = c;
+		item.second = val;
+	}
 }
 
 void TileMap::Reset()
@@ -35,6 +61,11 @@ void TileMap::Reset()
 	for( auto& tile : tiles )
 	{
 		tile = Colors::Black;
+	}
+	for( auto& light : lightMap )
+	{
+		light.first = Colors::Black;
+		light.second = globalBrightness;
 	}
 }
 

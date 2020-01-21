@@ -12,11 +12,12 @@ public:
 		x( x ),
 		y( y )
 	{}
-	constexpr Vec2_( T amount )
-		:
-		x( amount ),
-		y( amount )
-	{}
+	// constexpr Vec2_( T amount )
+	// 	:
+	// 	x( amount ),
+	// 	y( amount )
+	// {}
+	constexpr Vec2_( T amount ) = delete;
 
 	template<typename U>
 	constexpr operator Vec2_<U>() const
