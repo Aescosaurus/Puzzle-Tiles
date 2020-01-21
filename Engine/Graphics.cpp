@@ -307,6 +307,11 @@ void Graphics::BeginFrame()
 	memset( pSysBuffer,0u,sizeof( Color ) * Graphics::ScreenHeight * Graphics::ScreenWidth );
 }
 
+Color Graphics::GetPixel( int x,int y ) const
+{
+	return( pSysBuffer[y * ScreenWidth + x] );
+}
+
 void Graphics::PutPixel( int x,int y,Color c )
 {
 	assert( x >= 0 );
@@ -316,6 +321,22 @@ void Graphics::PutPixel( int x,int y,Color c )
 	pSysBuffer[Graphics::ScreenWidth * y + x] = c;
 }
 
+void Graphics::PutPixelAlpha( int x,int y,Color c,float alpha )
+{
+	assert( alpha >= 0.0f );
+	assert( alpha <= 1.0f );
+	const Color c2 = c;
+	const Color c1 = GetPixel( x,y );
+
+	typedef unsigned char uchar;
+	const Color blend = Colors::MakeRGB(
+		uchar( float( c2.GetR() - c1.GetR() ) * alpha ) + c1.GetR(),
+		uchar( float( c2.GetG() - c1.GetG() ) * alpha ) + c1.GetG(),
+		uchar( float( c2.GetB() - c1.GetB() ) * alpha ) + c1.GetB() );
+
+	PutPixel( x,y,blend );
+}
+
 void Graphics::DrawRect( int x,int y,int width,int height,Color c )
 {
 	for( int iy = y; iy < y + height; ++iy )
@@ -323,6 +344,18 @@ void Graphics::DrawRect( int x,int y,int width,int height,Color c )
 		for( int ix = x; ix < x + width; ++ix )
 		{
 			PutPixel( ix,iy,c );
+		}
+	}
+}
+
+void Graphics::DrawRectAlpha( int x,int y,int width,int height,
+	Color c,float alpha )
+{
+	for( int iy = y; iy < y + height; ++iy )
+	{
+		for( int ix = x; ix < x + width; ++ix )
+		{
+			PutPixelAlpha( ix,iy,c,alpha );
 		}
 	}
 }

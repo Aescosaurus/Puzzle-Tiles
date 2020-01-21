@@ -18,6 +18,9 @@ void Arrow::Update( float dt )
 void Arrow::Draw( TileMap& tilemap ) const
 {
 	tilemap.PutPixel( int( pos.x ),int( pos.y ),Colors::Yellow );
+
+	tilemap.DrawLightRect( pos.x - 1,pos.y - 1,3,3,
+		Colors::MakeRGB( 190,190,120 ),0.5f );
 }
 
 void Arrow::Destroy()

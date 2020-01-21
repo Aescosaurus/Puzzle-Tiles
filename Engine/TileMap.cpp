@@ -31,7 +31,11 @@ void TileMap::Draw( Graphics& gfx ) const
 			gfx.DrawRect( padding + x * tileSize,y * tileSize,
 				tileSize,tileSize,
 				tiles[y * size + x] );
-			// TODO: DrawRectAlpha with lightMap
+
+			gfx.DrawRectAlpha( padding + x * tileSize,y * tileSize,
+				tileSize,tileSize,
+				lightMap[y * size + x].first,
+				lightMap[y * size + x].second );
 		}
 	}
 }

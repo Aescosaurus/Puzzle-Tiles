@@ -61,7 +61,7 @@ void Game::UpdateModel()
 				enemy.Destroy();
 				tilemap.DrawLightRect( 0,0,
 					TileMap::size,TileMap::size,
-					Colors::White,1.0f );
+					Colors::White,0.9f );
 			}
 		}
 	}
