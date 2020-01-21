@@ -37,7 +37,7 @@ void Player::Update( const Keyboard& kbd,const Mouse& mouse,float dt )
 	if( refire.Update( dt ) && shotVel != Vei2::Zero() )
 	{
 		refire.Reset();
-		arrows.emplace_back( Arrow{ pos,pos + shotVel } );
+		arrows.emplace_back( Arrow{ pos,shotVel } );
 	}
 
 	for( auto& arrow : arrows )
@@ -59,4 +59,9 @@ void Player::Draw( TileMap& map ) const
 const Vei2& Player::GetPos() const
 {
 	return( pos );
+}
+
+std::vector<Arrow>& Player::GetArrows()
+{
+	return( arrows );
 }

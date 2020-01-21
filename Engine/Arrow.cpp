@@ -1,17 +1,36 @@
 #include "Arrow.h"
 
-Arrow::Arrow( const Vec2& pos,const Vec2& target )
+Arrow::Arrow( const Vei2& pos,const Vei2& vel )
 	:
 	pos( pos ),
-	vel( ( target - pos ) * speed )
+	vel( vel )
 {}
 
 void Arrow::Update( float dt )
 {
-	pos += vel * dt;
+	if( moveSpeed.Update( dt ) )
+	{
+		moveSpeed.Reset();
+		pos += vel;
+	}
 }
 
 void Arrow::Draw( TileMap& tilemap ) const
 {
 	tilemap.PutPixel( int( pos.x ),int( pos.y ),Colors::Yellow );
+}
+
+void Arrow::Destroy()
+{
+	destroyed = true;
+}
+
+Vei2 Arrow::GetPos()
+{
+	return( pos );
+}
+
+bool Arrow::IsDestroyed() const
+{
+	return( destroyed );
 }

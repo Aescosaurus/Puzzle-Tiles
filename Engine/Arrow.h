@@ -2,17 +2,23 @@
 
 #include "Vec2.h"
 #include "TileMap.h"
+#include "Timer.h"
 
-// Player shoots arrows at enemies.
 class Arrow
 {
 public:
-	Arrow( const Vec2& pos,const Vec2& target );
+	Arrow( const Vei2& pos,const Vei2& vel );
 
 	void Update( float dt );
 	void Draw( TileMap& tilemap ) const;
+
+	void Destroy();
+
+	Vei2 GetPos();
+	bool IsDestroyed() const;
 private:
-	static constexpr float speed = 35.0f;
-	Vec2 pos;
-	Vec2 vel;
+	Vei2 pos;
+	Vei2 vel;
+	bool destroyed = false;
+	Timer moveSpeed = 0.02f;
 };

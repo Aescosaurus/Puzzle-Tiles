@@ -20,6 +20,7 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include "ChiliUtils.h"
 
 Game::Game( MainWindow& wnd )
 	:
@@ -44,12 +45,29 @@ void Game::UpdateModel()
 {
 	const auto dt = ft.Mark();
 	guy.Update( wnd.kbd,wnd.mouse,dt );
+
+	auto& arrows = guy.GetArrows();
 	
 	const auto& playerPos = guy.GetPos();
 	for( auto& enemy : enemies )
 	{
 		enemy.Update( playerPos,dt );
+
+		for( auto& arrow : arrows )
+		{
+			if( arrow.GetPos() == enemy.GetPos() )
+			{
+				arrow.Destroy();
+				enemy.Destroy();
+				tilemap.DrawLightRect( 0,0,
+					TileMap::size,TileMap::size,
+					Colors::White,1.0f );
+			}
+		}
 	}
+
+	chili::remove_erase_if( enemies,std::mem_fn( &Enemy::IsDestroyed ) );
+	chili::remove_erase_if( arrows,std::mem_fn( &Arrow::IsDestroyed ) );
 }
 
 void Game::ComposeFrame()

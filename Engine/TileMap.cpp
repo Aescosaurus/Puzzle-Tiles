@@ -56,6 +56,18 @@ void TileMap::PutLight( int x,int y,Color c,float val )
 	}
 }
 
+void TileMap::DrawLightRect( int x,int y,int width,int height,
+	Color c,float val )
+{
+	for( int yy = y; yy < y + height; ++yy )
+	{
+		for( int xx = x; xx < x + width; ++xx )
+		{
+			PutLight( xx,yy,c,val );
+		}
+	}
+}
+
 void TileMap::Reset()
 {
 	for( auto& tile : tiles )

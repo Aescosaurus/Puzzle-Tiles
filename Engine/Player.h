@@ -18,6 +18,7 @@ public:
 	void Draw( TileMap& map ) const;
 
 	const Vei2& GetPos() const;
+	std::vector<Arrow>& GetArrows();
 private:
 	static constexpr float speed = 12.0f;
 	const Level& level;
