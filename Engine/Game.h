@@ -27,6 +27,7 @@
 #include "Player.h"
 #include "Level.h"
 #include "FrameTimer.h"
+#include "Enemy.h"
 
 class Game
 {
@@ -50,5 +51,6 @@ private:
 	TileMap tilemap;
 	Level level;
 	Player guy;
+	std::vector<Enemy> enemies;
 	/********************************/
 };

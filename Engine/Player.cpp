@@ -16,7 +16,8 @@ void Player::Update( const Keyboard& kbd,const Mouse& mouse,float dt )
 
 	if( vel != Vei2::Zero() )
 	{
-		if( canMove )
+		if( canMove && level.GetTile( pos + vel ) !=
+			Level::TileType::Wall )
 		{
 			if( vel.x != 0 ) pos += vel.X();
 			else pos += vel.Y();
@@ -28,23 +29,6 @@ void Player::Update( const Keyboard& kbd,const Mouse& mouse,float dt )
 		canMove = true;
 	}
 
-	// const auto testMove = Vec2( vel ).GetNormalized() * speed * dt;
-	// const auto testX = Vei2( pos + testMove.X() );
-	// const auto testY = Vei2( pos + testMove.Y() );
-	// if( level.GetTile( testX ) != Level::TileType::Wall )
-	// {
-	// 	pos += testMove.X();
-	// }
-	// if( level.GetTile( testY ) != Level::TileType::Wall )
-	// {
-	// 	pos += testMove.Y();
-	// }
-
-	// if( refire.Update( dt ) && mouse.LeftIsPressed() )
-	// {
-	// 	refire.Reset();
-	// 	arrows.emplace_back( Arrow{ pos,mouse.GetPos() } );
-	// }
 	Vei2 shotVel = Vei2::Zero();
 	if( kbd.KeyIsPressed( VK_UP ) ) --shotVel.y;
 	if( kbd.KeyIsPressed( VK_DOWN ) ) ++shotVel.y;
@@ -70,4 +54,9 @@ void Player::Draw( TileMap& map ) const
 	{
 		arrow.Draw( map );
 	}
+}
+
+const Vei2& Player::GetPos() const
+{
+	return( pos );
 }

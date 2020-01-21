@@ -26,7 +26,9 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	guy( level.GetValidSpot(),level )
-{}
+{
+	enemies.emplace_back( Enemy{ Vei2{ 5,5 } } );
+}
 
 void Game::Go()
 {
@@ -42,10 +44,21 @@ void Game::UpdateModel()
 {
 	const auto dt = ft.Mark();
 	guy.Update( wnd.kbd,wnd.mouse,dt );
+	
+	const auto& playerPos = guy.GetPos();
+	for( auto& enemy : enemies )
+	{
+		enemy.Update( playerPos,dt );
+	}
 }
 
 void Game::ComposeFrame()
 {
 	level.Draw( tilemap );
 	guy.Draw( tilemap );
+
+	for( const auto& enemy : enemies )
+	{
+		enemy.Draw( tilemap );
+	}
 }

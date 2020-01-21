@@ -16,6 +16,8 @@ public:
 
 	void Update( const Keyboard& kbd,const Mouse& mouse,float dt );
 	void Draw( TileMap& map ) const;
+
+	const Vei2& GetPos() const;
 private:
 	static constexpr float speed = 12.0f;
 	const Level& level;
