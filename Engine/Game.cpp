@@ -29,6 +29,10 @@ Game::Game( MainWindow& wnd )
 	guy( level.GetValidSpot(),level )
 {
 	enemies.emplace_back( Enemy{ Vei2{ 5,5 } } );
+	for( int i = 0; i < 4; ++i )
+	{
+		lanterns.emplace_back( Lantern{ level.GetValidSpot() } );
+	}
 }
 
 void Game::Go()
@@ -66,6 +70,18 @@ void Game::UpdateModel()
 		}
 	}
 
+	for( auto& lantern : lanterns )
+	{
+		for( auto& arrow : arrows )
+		{
+			if( arrow.GetPos() == lantern.GetPos() )
+			{
+				arrow.Destroy();
+				lantern.Light();
+			}
+		}
+	}
+
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	chili::remove_erase_if( arrows,isDestroyed );
 	chili::remove_erase_if( enemies,isDestroyed );
@@ -79,5 +95,10 @@ void Game::ComposeFrame()
 	for( const auto& enemy : enemies )
 	{
 		enemy.Draw( tilemap );
+	}
+
+	for( const auto& lantern : lanterns )
+	{
+		lantern.Draw( tilemap );
 	}
 }

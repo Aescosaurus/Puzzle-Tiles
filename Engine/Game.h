@@ -28,6 +28,7 @@
 #include "Level.h"
 #include "FrameTimer.h"
 #include "Enemy.h"
+#include "Lantern.h"
 
 class Game
 {
@@ -52,5 +53,6 @@ private:
 	Level level;
 	Player guy;
 	std::vector<Enemy> enemies;
+	std::vector<Lantern> lanterns;
 	/********************************/
 };

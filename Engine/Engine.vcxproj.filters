@@ -93,6 +93,9 @@
     <ClInclude Include="LevelObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Lantern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXErr.cpp">
@@ -141,6 +144,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LevelObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lantern.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

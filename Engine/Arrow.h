@@ -13,7 +13,7 @@ public:
 	Arrow( const Vei2& pos,const Vei2& vel );
 
 	void Update( float dt );
-	void Draw( TileMap& tilemap ) const;
+	void Draw( TileMap& tilemap ) const override;
 private:
 	Vei2 vel;
 	Timer moveSpeed = 0.04f;
