@@ -14,4 +14,5 @@ public:
 	void Light();
 private:
 	bool lit = false;
+	ColorStyle style;
 };

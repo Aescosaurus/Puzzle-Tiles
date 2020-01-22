@@ -71,7 +71,7 @@ void TileMap::DrawLightRect( int x,int y,int width,int height,Color c,float val 
 	}
 }
 
-void TileMap::DrawLightCircle( int x,int y,int size,Color c,float val )
+void TileMap::DrawLightCircle( int x,int y,int size,const ColorStyle& cs )
 {
 	const auto diffSq = size * size;
 	for( int yy = y - size; yy <= y + size; ++yy )
@@ -82,7 +82,7 @@ void TileMap::DrawLightCircle( int x,int y,int size,Color c,float val )
 			const auto yDiff = yy - y;
 			if( xDiff * xDiff + yDiff * yDiff <= diffSq )
 			{
-				PutLight( xx,yy,c,val );
+				PutLight( xx,yy,cs.Generate( Vei2{ x,y } ),0.5f );
 			}
 		}
 	}

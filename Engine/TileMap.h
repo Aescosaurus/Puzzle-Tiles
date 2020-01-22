@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "Graphics.h"
+#include "ColorStyle.h"
 
 class TileMap
 {
@@ -13,7 +14,7 @@ public:
 	void PutPixel( int x,int y,Color c );
 	void PutLight( int x,int y,Color c,float val );
 	void DrawLightRect( int x,int y,int width,int height,Color c,float val );
-	void DrawLightCircle( int x,int y,int size,Color c,float val );
+	void DrawLightCircle( int x,int y,int size,const ColorStyle& cs );
 	void Reset();
 
 	Color GetPixel( int x,int y ) const;

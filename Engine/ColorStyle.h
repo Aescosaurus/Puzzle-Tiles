@@ -2,6 +2,7 @@
 
 #include "Colors.h"
 #include "Random.h"
+#include "Vec2.h"
 
 class ColorStyle
 {
