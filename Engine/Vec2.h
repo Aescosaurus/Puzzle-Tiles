@@ -67,6 +67,10 @@ public:
 		*this = ( *this ) % rhs;
 		return( *this );
 	}
+	constexpr Vec2_& operator-() const
+	{
+		return( Vec2_<T>{ -x,-y } );
+	}
 
 	constexpr bool operator==( const Vec2_<T>& rhs ) const
 	{

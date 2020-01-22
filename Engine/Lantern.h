@@ -1,6 +1,9 @@
 #pragma once
 
 #include "LevelObject.h"
+#include <vector>
+#include "Colors.h"
+#include "ColorMap.h"
 
 class Lantern
 	:
@@ -15,4 +18,5 @@ public:
 private:
 	bool lit = false;
 	ColorStyle style;
+	ColorMap colMap;
 };

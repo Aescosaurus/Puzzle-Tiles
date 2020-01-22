@@ -52,9 +52,12 @@ void TileMap::PutPixel( int x,int y,Color c )
 void TileMap::PutLight( int x,int y,Color c,float val )
 {
 	if( x >= 0 && x < size &&
-		y >= 0 && y < size )
+		y >= 0 && y < size &&
+		val > 0.0f )
 	{
 		auto& item = lightMap[y * size + x];
+		// item.first = Colors::Interpolate( item.first,c,0.5f );
+		// item.second = ( item.second + val ) / 2;
 		item.first = c;
 		item.second = val;
 	}
@@ -82,7 +85,7 @@ void TileMap::DrawLightCircle( int x,int y,int size,const ColorStyle& cs )
 			const auto yDiff = yy - y;
 			if( xDiff * xDiff + yDiff * yDiff <= diffSq )
 			{
-				PutLight( xx,yy,cs.Generate( Vei2{ x,y } ),0.5f );
+				PutLight( xx,yy,cs.Generate(),1.0f );
 			}
 		}
 	}

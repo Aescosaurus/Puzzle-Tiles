@@ -3,7 +3,8 @@
 Lantern::Lantern( const Vei2& pos )
 	:
 	LevelObject( pos ),
-	style( Colors::MakeRGB( 240,190,110 ),10,false,pos,0.8f )
+	style( Colors::MakeRGB( 240,190,110 ),10,false ),
+	colMap( ColorMap::CreateCircle( 5,style,0.05f ) )
 {}
 
 void Lantern::Draw( TileMap& map ) const
@@ -14,7 +15,8 @@ void Lantern::Draw( TileMap& map ) const
 	{
 		// map.DrawLightCircle( pos.x,pos.y,5,
 		// 	Colors::MakeRGB( 240,190,110 ),0.5f );
-		map.DrawLightCircle( pos.x,pos.y,5,style );
+		// map.DrawLightCircle( pos.x,pos.y,5,style );
+		colMap.Draw( pos,map );
 	}
 }
 

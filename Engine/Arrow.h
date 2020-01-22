@@ -5,6 +5,7 @@
 #include "Timer.h"
 #include "LevelObject.h"
 #include "ColorStyle.h"
+#include "ColorMap.h"
 
 class Arrow
 	:
@@ -19,4 +20,5 @@ private:
 	Vei2 vel;
 	Timer moveSpeed = 0.04f;
 	ColorStyle cs;
+	ColorMap colMap;
 };

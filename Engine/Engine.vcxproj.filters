@@ -99,6 +99,9 @@
     <ClInclude Include="ColorStyle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ColorMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXErr.cpp">
@@ -150,6 +153,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Lantern.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
