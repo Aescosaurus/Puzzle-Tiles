@@ -328,11 +328,12 @@ void Graphics::PutPixelAlpha( int x,int y,Color c,float alpha )
 	const Color c2 = c;
 	const Color c1 = GetPixel( x,y );
 
-	typedef unsigned char uchar;
-	const Color blend = Colors::MakeRGB(
-		uchar( float( c2.GetR() - c1.GetR() ) * alpha ) + c1.GetR(),
-		uchar( float( c2.GetG() - c1.GetG() ) * alpha ) + c1.GetG(),
-		uchar( float( c2.GetB() - c1.GetB() ) * alpha ) + c1.GetB() );
+	// typedef unsigned char uchar;
+	// const Color blend = Colors::MakeRGB(
+	// 	uchar( float( c2.GetR() - c1.GetR() ) * alpha ) + c1.GetR(),
+	// 	uchar( float( c2.GetG() - c1.GetG() ) * alpha ) + c1.GetG(),
+	// 	uchar( float( c2.GetB() - c1.GetB() ) * alpha ) + c1.GetB() );
+	const Color blend = Colors::Interpolate( c1,c2,alpha );
 
 	PutPixel( x,y,blend );
 }

@@ -12,12 +12,19 @@ public:
 	{}
 	ColorStyle( Color base,int dev,bool mono = false )
 		:
+		ColorStyle( base,dev,mono,Vei2::Zero(),0.0f )
+	{}
+	ColorStyle( Color base,int dev,bool mono,
+		const Vei2& pos,float falloff )
+		:
 		baseCol( base ),
 		deviation( dev ),
-		monochrome( mono )
+		monochrome( mono ),
+		pos( pos ),
+		fallOff( falloff )
 	{}
 
-	Color Generate() const
+	Color Generate( Vei2 pos = Vei2{ -1,-1 } ) const
 	{
 		Color temp;
 		if( monochrome )
@@ -38,10 +45,27 @@ public:
 			);
 		}
 
+		const auto brightnessVal = CalcBrightness( pos );
+		temp = Colors::Interpolate( temp,Colors::Black,brightnessVal );
+
 		return( temp );
+	}
+
+	float CalcBrightness( Vei2 pos ) const
+	{
+		float val = 0.0f;
+		if( pos.x != -1 )
+		{
+			const auto diff = this->pos - pos;
+			val = diff.GetLength() * fallOff;
+		}
+		if( val > 1.0f ) val = 1.0f;
+		return( val );
 	}
 public:
 	Color baseCol;
 	int deviation;
 	bool monochrome = false;
+	Vei2 pos;
+	float fallOff;
 };

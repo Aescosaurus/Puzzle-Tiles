@@ -83,6 +83,8 @@ void Game::UpdateModel()
 	}
 	// TODO: Put stuff from game into functions in each object.
 	// TODO: Light gets darker the farther it is from source.
+	// TODO: Pass ColorStyle into drawcircle and drawrect and such.
+	// TODO: Abstract collision checking into level.canmove?
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	chili::remove_erase_if( arrows,isDestroyed );

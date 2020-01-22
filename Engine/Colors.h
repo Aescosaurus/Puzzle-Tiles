@@ -20,6 +20,8 @@
 ******************************************************************************************/
 #pragma once
 
+#include <cassert>
+
 class Color
 {
 public:
@@ -97,7 +99,18 @@ namespace Colors
 {
 	static constexpr Color MakeRGB( unsigned char r,unsigned char g,unsigned char b )
 	{
-		return (r << 16) | (g << 8) | b;
+		return ( r << 16 ) | ( g << 8 ) | b;
+	}
+	static constexpr Color Interpolate( Color c1,Color c2,float percent )
+	{
+		assert( percent >= 0.0f );
+		assert( percent <= 1.0f );
+
+		const Color blend = MakeRGB(
+			int( float( c2.GetR() - c1.GetR() ) * percent ) + c1.GetR(),
+			int( float( c2.GetG() - c1.GetG() ) * percent ) + c1.GetG(),
+			int( float( c2.GetB() - c1.GetB() ) * percent ) + c1.GetB() );
+		return( blend );
 	}
 	static constexpr Color White = MakeRGB( 255u,255u,255u );
 	static constexpr Color Black = MakeRGB( 0u,0u,0u );
