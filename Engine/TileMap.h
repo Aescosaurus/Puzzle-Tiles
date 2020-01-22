@@ -23,7 +23,7 @@ public:
 	static constexpr int tileSize = Graphics::ScreenHeight / size;
 	static constexpr int padding = ( Graphics::ScreenWidth - tileSize * size ) / 2;
 private:
-	static constexpr float globalBrightness = 0.6f;
+	static constexpr float globalBrightness = 0.5f;
 	std::vector<Color> tiles;
 	std::vector<std::pair<Color,float>> lightMap;
 };

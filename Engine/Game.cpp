@@ -82,9 +82,9 @@ void Game::UpdateModel()
 		}
 	}
 	// TODO: Put stuff from game into functions in each object.
-	// TODO: Light gets darker the farther it is from source.
 	// TODO: Abstract collision checking into level.canmove?
 	// TODO: Upgrade everything applicable to use colormap.
+	// TODO: Level Objects are only visible if light is on them.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	chili::remove_erase_if( arrows,isDestroyed );

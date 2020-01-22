@@ -5,7 +5,7 @@ Arrow::Arrow( const Vei2& pos,const Vei2& vel )
 	LevelObject( pos ),
 	vel( vel ),
 	cs( Colors::MakeRGB( 200,200,140 ),20,false ),
-	colMap( ColorMap::CreateCircle( 2,cs,0.2f ) )
+	colMap( ColorMap::CreateCircle( 2,cs,0.1f ) )
 {}
 
 void Arrow::Update( float dt )

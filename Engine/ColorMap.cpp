@@ -18,6 +18,7 @@ void ColorMap::Draw( const Vei2& pos,TileMap& tilemap ) const
 ColorMap ColorMap::CreateCircle( int radius,const ColorStyle& cs,
 	float fallOff )
 {
+	assert( 1.01f - radius * fallOff > 0.0f );
 	ColorMap temp;
 	temp.width = radius * 2 + 1;
 	temp.height = radius * 2 + 1;
@@ -36,8 +37,9 @@ ColorMap ColorMap::CreateCircle( int radius,const ColorStyle& cs,
 			float light = 0.0f;
 			if( curDiff <= diffSq )
 			{
-				light = 1.0f;
-				light -= float( curDiff ) * fallOff;
+				// light = radius * fallOff;
+				light = 1.01f;
+				light -= float( std::sqrt( curDiff ) ) * fallOff;
 			}
 			// temp.lights[y * temp.width + x] = light;
 			// temp.colors[y * temp.width + x] = cs.Generate();
