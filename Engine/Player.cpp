@@ -6,7 +6,7 @@ Player::Player( const Vei2& pos,const Level& level )
 	level( level )
 {}
 
-void Player::Update( const Keyboard& kbd,const Mouse& mouse,float dt )
+void Player::Update( const Keyboard& kbd,float dt )
 {
 	auto vel = Vei2::Zero();
 	if( kbd.KeyIsPressed( 'W' ) ) --vel.y;

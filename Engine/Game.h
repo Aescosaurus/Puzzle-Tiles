@@ -24,12 +24,7 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "TileMap.h"
-#include "Player.h"
-#include "Level.h"
-#include "FrameTimer.h"
-#include "Enemy.h"
-#include "Lantern.h"
-#include "Door.h"
+#include "Gameplay.h"
 
 class Game
 {
@@ -43,19 +38,13 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
-	void Load( const std::string& level );
 	/********************************/
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	FrameTimer ft;
 	TileMap tilemap;
-	Level level;
-	Player guy;
-	std::vector<Enemy> enemies;
-	std::vector<Lantern> lanterns;
-	Door door;
+	Gameplay gameplay;
 	/********************************/
 };

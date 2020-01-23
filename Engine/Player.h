@@ -14,7 +14,7 @@ class Player
 public:
 	Player( const Vei2& pos,const Level& level );
 
-	void Update( const Keyboard& kbd,const Mouse& mouse,float dt );
+	void Update( const Keyboard& kbd,float dt );
 	void Draw( TileMap& map ) const;
 
 	void SetPos( const Vei2& pos );
