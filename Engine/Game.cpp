@@ -28,7 +28,7 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	guy( level.GetValidSpot(),level )
 {
-	enemies.emplace_back( Enemy{ Vei2{ 5,5 } } );
+	// enemies.emplace_back( Enemy{ Vei2{ 5,5 } } );
 	for( int i = 0; i < 4; ++i )
 	{
 		lanterns.emplace_back( Lantern{ level.GetValidSpot() } );
@@ -63,9 +63,9 @@ void Game::UpdateModel()
 			{
 				arrow.Destroy();
 				enemy.Destroy();
-				tilemap.DrawLightRect( 0,0,
-					TileMap::size,TileMap::size,
-					Colors::White,0.9f );
+				// tilemap.DrawLightRect( 0,0,
+				// 	TileMap::size,TileMap::size,
+				// 	Colors::White,0.9f );
 			}
 		}
 	}
@@ -85,6 +85,7 @@ void Game::UpdateModel()
 	// TODO: Abstract collision checking into level.canmove?
 	// TODO: Upgrade everything applicable to use colormap.
 	// TODO: Level Objects are only visible if light is on them.
+	// TODO: Clean up old commented out stuff everywhere.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	chili::remove_erase_if( arrows,isDestroyed );

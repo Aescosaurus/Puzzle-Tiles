@@ -39,27 +39,10 @@ public:
 			);
 		}
 
-		// const auto brightnessVal = CalcBrightness( pos );
-		// temp = Colors::Interpolate( temp,Colors::Black,brightnessVal );
-
 		return( temp );
 	}
-
-	// float CalcBrightness( Vei2 pos ) const
-	// {
-	// 	float val = 0.0f;
-	// 	if( pos.x != -1 )
-	// 	{
-	// 		const auto diff = this->pos - pos;
-	// 		val = diff.GetLength() * fallOff;
-	// 	}
-	// 	if( val > 1.0f ) val = 1.0f;
-	// 	return( val );
-	// }
 public:
 	Color baseCol;
 	int deviation;
 	bool monochrome = false;
-	// Vei2 pos;
-	// float fallOff;
 };

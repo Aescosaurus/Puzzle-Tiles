@@ -63,33 +63,33 @@ void TileMap::PutLight( int x,int y,Color c,float val )
 	}
 }
 
-void TileMap::DrawLightRect( int x,int y,int width,int height,Color c,float val )
-{
-	for( int yy = y; yy < y + height; ++yy )
-	{
-		for( int xx = x; xx < x + width; ++xx )
-		{
-			PutLight( xx,yy,c,val );
-		}
-	}
-}
-
-void TileMap::DrawLightCircle( int x,int y,int size,const ColorStyle& cs )
-{
-	const auto diffSq = size * size;
-	for( int yy = y - size; yy <= y + size; ++yy )
-	{
-		for( int xx = x - size; xx <= x + size; ++xx )
-		{
-			const auto xDiff = xx - x;
-			const auto yDiff = yy - y;
-			if( xDiff * xDiff + yDiff * yDiff <= diffSq )
-			{
-				PutLight( xx,yy,cs.Generate(),1.0f );
-			}
-		}
-	}
-}
+// void TileMap::DrawLightRect( int x,int y,int width,int height,Color c,float val )
+// {
+// 	for( int yy = y; yy < y + height; ++yy )
+// 	{
+// 		for( int xx = x; xx < x + width; ++xx )
+// 		{
+// 			PutLight( xx,yy,c,val );
+// 		}
+// 	}
+// }
+// 
+// void TileMap::DrawLightCircle( int x,int y,int size,const ColorStyle& cs )
+// {
+// 	const auto diffSq = size * size;
+// 	for( int yy = y - size; yy <= y + size; ++yy )
+// 	{
+// 		for( int xx = x - size; xx <= x + size; ++xx )
+// 		{
+// 			const auto xDiff = xx - x;
+// 			const auto yDiff = yy - y;
+// 			if( xDiff * xDiff + yDiff * yDiff <= diffSq )
+// 			{
+// 				PutLight( xx,yy,cs.Generate(),1.0f );
+// 			}
+// 		}
+// 	}
+// }
 
 void TileMap::Reset()
 {
