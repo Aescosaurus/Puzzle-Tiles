@@ -10,8 +10,8 @@ class Level
 public:
 	enum class TileType
 	{
-		Floor,
-		Wall
+		Wall,
+		Floor
 	};
 private:
 	class Tile
@@ -26,6 +26,8 @@ public:
 	Level();
 
 	void Draw( TileMap& map ) const;
+
+	void Load( const std::vector<int>& tiles );
 
 	TileType GetTile( const Vei2& pos ) const;
 	// Return random spot on ground.

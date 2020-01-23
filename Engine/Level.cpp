@@ -1,6 +1,7 @@
 #include "Level.h"
 #include "Random.h"
 #include "ColorStyle.h"
+#include <fstream>
 
 Level::Level()
 {
@@ -15,49 +16,49 @@ Level::Level()
 		}
 	}
 
-	// Set up random rooms.
-	const int nRooms = int( Random{ 11,15 } );
-	std::vector<RectI> rooms;
-	for( int i = 0; i < nRooms; i )
-	{
-		const auto randSize = Vei2{
-			int( Random{ 4,7 } ),
-			int( Random{ 4,7 } )
-		};
-		const auto randPos = Vei2{
-			int( Random{ 1,size - randSize.x - 1 } ),
-			int( Random{ 1,size - randSize.y - 1 } )
-		};
-
-		auto testRect = RectI{ randPos,randSize.x,randSize.y };
-		bool overlapping = false;
-		if( int( rooms.size() ) == 0 ) overlapping = true;
-		for( const auto& room : rooms )
-		{
-			if( room.IsOverlappingWith( testRect ) )
-			{
-				overlapping = true;
-				break;
-			}
-		}
-		if( overlapping )
-		{
-			rooms.emplace_back( RectI{ randPos,randSize.x,randSize.y } );
-			++i;
-		}
-	}
-
-	// Fill in random rooms.
-	for( const auto& room : rooms )
-	{
-		DrawRect( room );
-	}
-
-	// Randomize colors.
-	for( auto& tile : tiles )
-	{
-		tile.RandomizeColor();
-	}
+	// // Set up random rooms.
+	// const int nRooms = int( Random{ 11,15 } );
+	// std::vector<RectI> rooms;
+	// for( int i = 0; i < nRooms; i )
+	// {
+	// 	const auto randSize = Vei2{
+	// 		int( Random{ 4,7 } ),
+	// 		int( Random{ 4,7 } )
+	// 	};
+	// 	const auto randPos = Vei2{
+	// 		int( Random{ 1,size - randSize.x - 1 } ),
+	// 		int( Random{ 1,size - randSize.y - 1 } )
+	// 	};
+	// 
+	// 	auto testRect = RectI{ randPos,randSize.x,randSize.y };
+	// 	bool overlapping = false;
+	// 	if( int( rooms.size() ) == 0 ) overlapping = true;
+	// 	for( const auto& room : rooms )
+	// 	{
+	// 		if( room.IsOverlappingWith( testRect ) )
+	// 		{
+	// 			overlapping = true;
+	// 			break;
+	// 		}
+	// 	}
+	// 	if( overlapping )
+	// 	{
+	// 		rooms.emplace_back( RectI{ randPos,randSize.x,randSize.y } );
+	// 		++i;
+	// 	}
+	// }
+	// 
+	// // Fill in random rooms.
+	// for( const auto& room : rooms )
+	// {
+	// 	DrawRect( room );
+	// }
+	// 
+	// // Randomize colors.
+	// for( auto& tile : tiles )
+	// {
+	// 	tile.RandomizeColor();
+	// }
 }
 
 void Level::Draw( TileMap& map ) const
@@ -68,6 +69,18 @@ void Level::Draw( TileMap& map ) const
 		{
 			map.PutPixel( x,y,tiles[y * size + x].c );
 		}
+	}
+}
+
+void Level::Load( const std::vector<int>& tiles )
+{
+	assert( tiles.size() == size * size );
+	this->tiles.clear();
+	this->tiles.reserve( size * size );
+	for( int tile : tiles )
+	{
+		this->tiles.emplace_back( Tile{ TileType( tile ),Colors::Magenta } );
+		this->tiles.back().RandomizeColor();
 	}
 }
 

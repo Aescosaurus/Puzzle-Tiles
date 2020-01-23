@@ -67,7 +67,7 @@ public:
 		*this = ( *this ) % rhs;
 		return( *this );
 	}
-	constexpr Vec2_& operator-() const
+	constexpr Vec2_ operator-() const
 	{
 		return( Vec2_<T>{ -x,-y } );
 	}

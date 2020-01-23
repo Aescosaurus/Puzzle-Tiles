@@ -56,6 +56,11 @@ void Player::Draw( TileMap& map ) const
 	}
 }
 
+void Player::SetPos( const Vei2& pos )
+{
+	this->pos = pos;
+}
+
 const Vei2& Player::GetPos() const
 {
 	return( pos );

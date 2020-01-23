@@ -29,6 +29,7 @@
 #include "FrameTimer.h"
 #include "Enemy.h"
 #include "Lantern.h"
+#include "Door.h"
 
 class Game
 {
@@ -42,6 +43,7 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
+	void Load( const std::string& level );
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -54,5 +56,6 @@ private:
 	Player guy;
 	std::vector<Enemy> enemies;
 	std::vector<Lantern> lanterns;
+	Door door;
 	/********************************/
 };

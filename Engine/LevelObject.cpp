@@ -15,6 +15,11 @@ void LevelObject::Destroy()
 	destroyed = true;
 }
 
+void LevelObject::SetPos( const Vei2& pos )
+{
+	this->pos = pos;
+}
+
 const Vei2& LevelObject::GetPos()
 {
 	return( pos );

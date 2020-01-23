@@ -17,6 +17,8 @@ public:
 	void Update( const Keyboard& kbd,const Mouse& mouse,float dt );
 	void Draw( TileMap& map ) const;
 
+	void SetPos( const Vei2& pos );
+
 	const Vei2& GetPos() const;
 	std::vector<Arrow>& GetArrows();
 private:

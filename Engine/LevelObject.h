@@ -11,6 +11,7 @@ public:
 	virtual void Draw( TileMap& map ) const;
 
 	void Destroy();
+	void SetPos( const Vei2& pos );
 
 	const Vei2& GetPos();
 	bool IsDestroyed() const;
