@@ -15,10 +15,18 @@ LevelEditor::LevelEditor( const Keyboard& kbd,const Mouse& mouse )
 void LevelEditor::Update()
 {
 	mousePos = mouse.GetPos();
+	const auto mouseMin = TileMap::padding;
+	const auto mouseMax = Graphics::ScreenWidth -
+		TileMap::padding - TileMap::tileSize;
+	if( mousePos.x < mouseMin ) mousePos.x = mouseMin;
+	if( mousePos.x > mouseMax ) mousePos.x = mouseMax;
 	mousePos.x -= TileMap::padding;
-	mousePos *= TileMap::tileSize;
-	mousePos.x /= Graphics::ScreenWidth;
-	mousePos.y /= Graphics::ScreenHeight;
+	mousePos /= TileMap::tileSize;
+
+	if( mouse.LeftIsPressed() )
+	{
+		tiles[mousePos.y * size + mousePos.x] = selectedTile;
+	}
 }
 
 void LevelEditor::Draw( TileMap& tilemap ) const
