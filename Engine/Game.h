@@ -25,9 +25,17 @@
 #include "Graphics.h"
 #include "TileMap.h"
 #include "Gameplay.h"
+#include "LevelEditor.h"
 
 class Game
 {
+private:
+	enum class State
+	{
+		Menu,
+		Gameplay,
+		LevelEditor
+	};
 public:
 	Game( class MainWindow& wnd );
 	Game( const Game& ) = delete;
@@ -46,5 +54,7 @@ private:
 	/*  User Variables              */
 	TileMap tilemap;
 	Gameplay gameplay;
+	LevelEditor levelEditor;
+	State gameState = State::LevelEditor;
 	/********************************/
 };

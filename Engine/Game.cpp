@@ -25,7 +25,8 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	gameplay( wnd.kbd,tilemap )
+	gameplay( wnd.kbd,tilemap ),
+	levelEditor( wnd.kbd,wnd.mouse )
 {}
 
 void Game::Go()
@@ -40,10 +41,30 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	gameplay.Update();
+	switch( gameState )
+	{
+	case State::Menu:
+		break;
+	case State::Gameplay:
+		gameplay.Update();
+		break;
+	case State::LevelEditor:
+		levelEditor.Update();
+		break;
+	}
 }
 
 void Game::ComposeFrame()
 {
-	gameplay.Draw();
+	switch( gameState )
+	{
+	case State::Menu:
+		break;
+	case State::Gameplay:
+		gameplay.Draw();
+		break;
+	case State::LevelEditor:
+		levelEditor.Draw( tilemap );
+		break;
+	}
 }
