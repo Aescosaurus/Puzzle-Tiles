@@ -1,5 +1,7 @@
 #include "LevelEditor.h"
 #include <cctype>
+#include <fstream>
+#include <cassert>
 
 LevelEditor::LevelEditor( const Keyboard& kbd,const Mouse& mouse )
 	:
@@ -21,6 +23,24 @@ void LevelEditor::Update()
 		if( kbd.KeyIsPressed( toupper( key ) ) )
 		{
 			selectedTile = key;
+		}
+	}
+
+	if( kbd.KeyIsPressed( VK_CONTROL ) &&
+		kbd.KeyIsPressed( 'S' ) )
+	{
+		std::ofstream out{ "Levels/_TestLevel.txt" };
+		assert( out.good() );
+		int x = 0;
+		for( const auto& tile : tiles )
+		{
+			out << tile;
+			++x;
+			if( x >= size )
+			{
+				out << '\n';
+				x = 0;
+			}
 		}
 	}
 
