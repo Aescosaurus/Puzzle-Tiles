@@ -18,6 +18,7 @@ private:
 	const Mouse& mouse;
 
 	static constexpr int size = TileMap::size;
+	const std::vector<char> items;
 
 	std::vector<char> tiles;
 	Vei2 mousePos = Vei2::Zero();

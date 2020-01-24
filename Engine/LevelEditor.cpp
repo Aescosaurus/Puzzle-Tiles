@@ -1,9 +1,11 @@
 #include "LevelEditor.h"
+#include <cctype>
 
 LevelEditor::LevelEditor( const Keyboard& kbd,const Mouse& mouse )
 	:
 	kbd( kbd ),
-	mouse( mouse )
+	mouse( mouse ),
+	items( { '0','1','p','d','l' } )
 {
 	tiles.reserve( size * size );
 	for( int i = 0; i < size * size; ++i )
@@ -14,6 +16,14 @@ LevelEditor::LevelEditor( const Keyboard& kbd,const Mouse& mouse )
 
 void LevelEditor::Update()
 {
+	for( const auto& key : items )
+	{
+		if( kbd.KeyIsPressed( toupper( key ) ) )
+		{
+			selectedTile = key;
+		}
+	}
+
 	mousePos = mouse.GetPos();
 	const auto mouseMin = TileMap::padding;
 	const auto mouseMax = Graphics::ScreenWidth -
@@ -41,6 +51,14 @@ void LevelEditor::Draw( TileMap& tilemap ) const
 
 	tilemap.PutPixel( mousePos.x,mousePos.y,
 		Tile2Color( selectedTile ) );
+
+	for( int y = 0; y < size; ++y )
+	{
+		for( int x = 0; x < size; ++x )
+		{
+			tilemap.PutLight( x,y,Colors::White,0.5f );
+		}
+	}
 }
 
 Color LevelEditor::Tile2Color( char tile ) const
@@ -48,7 +66,7 @@ Color LevelEditor::Tile2Color( char tile ) const
 	switch( tile )
 	{
 	case '0':
-		return( Colors::MakeRGB( 0,0,40 ) );
+		return( Colors::MakeRGB( 10,10,40 ) );
 	case '1':
 		return( Colors::Gray );
 	case 'p':
