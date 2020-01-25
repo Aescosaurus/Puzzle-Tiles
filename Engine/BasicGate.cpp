@@ -2,7 +2,8 @@
 
 BasicGate::BasicGate( const Vei2& pos )
 	:
-	LevelObject( pos )
+	LevelObject( pos ),
+	col( style.Generate() )
 {}
 
 void BasicGate::Update( UpdateInfo& info )
@@ -35,5 +36,5 @@ void BasicGate::Update( UpdateInfo& info )
 
 void BasicGate::Draw( TileMap& tilemap ) const
 {
-	tilemap.PutPixel( pos.x,pos.y,Colors::Red );
+	tilemap.PutPixel( pos.x,pos.y,col );
 }

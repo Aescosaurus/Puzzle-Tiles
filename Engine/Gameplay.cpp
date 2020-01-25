@@ -46,6 +46,8 @@ void Gameplay::Update()
 	// TODO: Level Objects are only visible if light is on them.
 	// TODO: Exit loads next level.
 	// TODO: Player can't walk on top of lanterns and such.
+	// TODO: Different color gates.
+	// TODO: Some test levels.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	chili::remove_erase_if( arrows,isDestroyed );
