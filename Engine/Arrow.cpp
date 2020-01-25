@@ -5,7 +5,7 @@ Arrow::Arrow( const Vei2& pos,const Vei2& vel )
 	LevelObject( pos ),
 	vel( vel ),
 	cs( Colors::MakeRGB( 200,200,140 ),20,false ),
-	colMap( ColorMap::CreateCircle( 2,cs,0.1f ) )
+	colMap( ColorMap::CreateCircle( lightArea,cs,0.1f ) )
 {}
 
 void Arrow::Update( UpdateInfo& info )
@@ -14,6 +14,12 @@ void Arrow::Update( UpdateInfo& info )
 	{
 		moveSpeed.Reset();
 		pos += vel;
+	}
+
+	if( !Graphics::ScreenRect.GetExpanded( lightArea )
+		.ContainsPoint( pos ) )
+	{
+		Destroy();
 	}
 }
 

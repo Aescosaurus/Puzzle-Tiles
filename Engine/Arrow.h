@@ -17,6 +17,7 @@ public:
 	void Update( UpdateInfo& info ) override;
 	void Draw( TileMap& tilemap ) const override;
 private:
+	static constexpr int lightArea = 2;
 	Vei2 vel;
 	Timer moveSpeed = 0.04f;
 	ColorStyle cs;

@@ -24,6 +24,7 @@
 #include <wrl.h>
 #include "ChiliException.h"
 #include "Colors.h"
+#include "Rect.h"
 
 class Graphics
 {
@@ -79,4 +80,5 @@ private:
 public:
 	static constexpr int ScreenWidth = 1920 / 2;
 	static constexpr int ScreenHeight = 1080 / 2;
+	static constexpr RectI ScreenRect = { 0,ScreenWidth,0,ScreenHeight };
 };
