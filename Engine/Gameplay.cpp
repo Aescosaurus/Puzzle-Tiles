@@ -11,8 +11,9 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 	door( Vei2{ 0,0 } )
 {
 	updateInfo.arrows = &arrows;
+	updateInfo.basicGates = &basicGates;
 
-	Load( "Levels/Level1.txt" );
+	Load( "Levels/_TestLevel.txt" );
 	// enemies.emplace_back( Enemy{ Vei2{ 5,5 } } );
 	// for( int i = 0; i < 4; ++i )
 	// {
@@ -37,11 +38,20 @@ void Gameplay::Update()
 		lantern->Update( updateInfo );
 	}
 
+	for( auto& gate : basicGates )
+	{
+		gate->Update( updateInfo );
+	}
+
 	// TODO: Level Objects are only visible if light is on them.
 	// TODO: Destroy arrows once they exit the screen.
+	// TODO: Optimize DrawRectAlpha but in tilemap.
+	// TODO: Exit loads next level.
+	// TODO: Player can't walk on top of lanterns and such.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	chili::remove_erase_if( arrows,isDestroyed );
+	chili::remove_erase_if( lanterns,isDestroyed );
 	// chili::remove_erase_if( enemies,isDestroyed );
 }
 
@@ -59,6 +69,13 @@ void Gameplay::Draw()
 	{
 		lantern->Draw( tilemap );
 	}
+
+	for( const auto& gate : basicGates )
+	{
+		gate->Draw( tilemap );
+	}
+
+	door.Draw( tilemap );
 }
 
 void Gameplay::Load( const std::string& levelName )
@@ -77,6 +94,9 @@ void Gameplay::Load( const std::string& levelName )
 		case '0':
 			floorVal = 0;
 			break;
+		case '1':
+			floorVal = 1;
+			break;
 		case 'p':
 			guy.SetPos( pos );
 			floorVal = 1;
@@ -85,12 +105,13 @@ void Gameplay::Load( const std::string& levelName )
 			door.SetPos( pos );
 			floorVal = 1;
 			break;
+		case 'g':
+			basicGates.emplace_back( std::make_unique<BasicGate>( pos ) );
+			floorVal = 1;
+			break;
 		case 'l':
 			// lanterns.emplace_back( Lantern{ pos } );
 			lanterns.emplace_back( std::make_unique<Lantern>( pos ) );
-			floorVal = 1;
-			break;
-		case '1':
 			floorVal = 1;
 			break;
 		case '\n':

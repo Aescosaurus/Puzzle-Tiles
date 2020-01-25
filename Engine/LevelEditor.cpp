@@ -7,7 +7,7 @@ LevelEditor::LevelEditor( const Keyboard& kbd,const Mouse& mouse )
 	:
 	kbd( kbd ),
 	mouse( mouse ),
-	items( { '0','1','p','d','l' } )
+	items( { '0','1','p','d','l','g' } )
 {
 	tiles.reserve( size * size );
 	for( int i = 0; i < size * size; ++i )
@@ -95,5 +95,9 @@ Color LevelEditor::Tile2Color( char tile ) const
 		return( Colors::Cyan );
 	case 'l':
 		return( Colors::Orange );
+	case 'g':
+		return( Colors::Red );
 	}
+	assert( false );
+	return( Colors::Magenta );
 }

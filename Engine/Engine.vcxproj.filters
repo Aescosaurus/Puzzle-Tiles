@@ -111,7 +111,7 @@
     <ClInclude Include="Gameplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Gate.h">
+    <ClInclude Include="BasicGate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -177,6 +177,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Gameplay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicGate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

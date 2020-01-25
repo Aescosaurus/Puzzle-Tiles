@@ -10,4 +10,7 @@ class BasicGate
 {
 public:
 	BasicGate( const Vei2& pos );
+
+	void Update( UpdateInfo& info ) override;
+	void Draw( TileMap& tilemap ) const override;
 };

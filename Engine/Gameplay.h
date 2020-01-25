@@ -8,6 +8,7 @@
 #include "Enemy.h"
 #include "Lantern.h"
 #include "Door.h"
+#include "BasicGate.h"
 
 class Gameplay
 {
@@ -27,7 +28,7 @@ private:
 	LevelObject::UpdateInfo updateInfo;
 	Player guy;
 	PLevelObjectArr& arrows;
-	// std::vector<Enemy> enemies;
 	PLevelObjectArr lanterns;
+	PLevelObjectArr basicGates;
 	Door door;
 };

@@ -14,6 +14,7 @@ public:
 	public:
 		float dt;
 		PLevelObjectArr* arrows;
+		PLevelObjectArr* basicGates;
 		// PLevelObjectArr* lanterns;
 	};
 public:
