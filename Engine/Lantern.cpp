@@ -3,7 +3,6 @@
 Lantern::Lantern( const Vei2& pos )
 	:
 	LevelObject( pos ),
-	style( Colors::MakeRGB( 240,190,110 ),10,false ),
 	colMap( ColorMap::CreateCircle( 5,style,0.2f ) )
 {}
 

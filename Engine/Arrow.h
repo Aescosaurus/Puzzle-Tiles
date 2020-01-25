@@ -20,6 +20,6 @@ private:
 	static constexpr int lightArea = 2;
 	Vei2 vel;
 	Timer moveSpeed = 0.04f;
-	ColorStyle cs;
+	static constexpr ColorStyle cs = { Colors::MakeRGB( 200,200,140 ),20 };
 	ColorMap colMap;
 };

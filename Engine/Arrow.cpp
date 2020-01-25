@@ -4,7 +4,6 @@ Arrow::Arrow( const Vei2& pos,const Vei2& vel )
 	:
 	LevelObject( pos ),
 	vel( vel ),
-	cs( Colors::MakeRGB( 200,200,140 ),20,false ),
 	colMap( ColorMap::CreateCircle( lightArea,cs,0.1f ) )
 {}
 

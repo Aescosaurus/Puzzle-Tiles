@@ -18,6 +18,6 @@ private:
 	void Light();
 private:
 	bool lit = false;
-	ColorStyle style;
+	static constexpr ColorStyle style = { Colors::MakeRGB( 240,190,110 ),10 };
 	ColorMap colMap;
 };
