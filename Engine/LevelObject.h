@@ -13,7 +13,7 @@ public:
 	void Destroy();
 	void SetPos( const Vei2& pos );
 
-	const Vei2& GetPos();
+	const Vei2& GetPos() const;
 	bool IsDestroyed() const;
 protected:
 	Vei2 pos;

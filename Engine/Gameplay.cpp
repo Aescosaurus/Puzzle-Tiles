@@ -24,35 +24,37 @@ void Gameplay::Update()
 
 	auto& arrows = guy.GetArrows();
 
-	const auto& playerPos = guy.GetPos();
-	for( auto& enemy : enemies )
-	{
-		enemy.Update( playerPos,dt );
+	// const auto& playerPos = guy.GetPos();
+	// for( auto& enemy : enemies )
+	// {
+	// 	enemy.Update( playerPos,dt );
+	// 
+	// 	for( auto& arrow : arrows )
+	// 	{
+	// 		if( arrow.GetPos() == enemy.GetPos() )
+	// 		{
+	// 			arrow.Destroy();
+	// 			enemy.Destroy();
+	// 			// tilemap.DrawLightRect( 0,0,
+	// 			// 	TileMap::size,TileMap::size,
+	// 			// 	Colors::White,0.9f );
+	// 		}
+	// 	}
+	// }
 
-		for( auto& arrow : arrows )
-		{
-			if( arrow.GetPos() == enemy.GetPos() )
-			{
-				arrow.Destroy();
-				enemy.Destroy();
-				// tilemap.DrawLightRect( 0,0,
-				// 	TileMap::size,TileMap::size,
-				// 	Colors::White,0.9f );
-			}
-		}
-	}
-
-	for( auto& lantern : lanterns )
+	for( auto& arrow : arrows )
 	{
-		for( auto& arrow : arrows )
+		const auto& arrowPos = arrow.GetPos();
+		for( auto& lantern : lanterns )
 		{
-			if( arrow.GetPos() == lantern.GetPos() )
+			if( arrowPos == lantern.GetPos() )
 			{
 				arrow.Destroy();
 				lantern.Light();
 			}
 		}
 	}
+
 	// TODO: Put stuff from game into functions in each object.
 	// TODO: Level Objects are only visible if light is on them.
 	// TODO: Destroy arrows once they exit the screen.

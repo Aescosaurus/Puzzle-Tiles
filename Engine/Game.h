@@ -55,6 +55,6 @@ private:
 	TileMap tilemap;
 	Gameplay gameplay;
 	LevelEditor levelEditor;
-	State gameState = State::LevelEditor;
+	State gameState = State::Gameplay;
 	/********************************/
 };

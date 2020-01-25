@@ -20,7 +20,7 @@ void LevelObject::SetPos( const Vei2& pos )
 	this->pos = pos;
 }
 
-const Vei2& LevelObject::GetPos()
+const Vei2& LevelObject::GetPos() const
 {
 	return( pos );
 }
