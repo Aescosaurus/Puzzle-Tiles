@@ -10,7 +10,12 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 	arrows( guy.GetArrows() ),
 	door( Vei2{ 0,0 } )
 {
+	updateInfo.kbd = &kbd;
+	updateInfo.dt = 0.0f;
+	updateInfo.player = &guy;
+	updateInfo.door = &door;
 	updateInfo.arrows = &arrows;
+	updateInfo.lanterns = &lanterns;
 	updateInfo.basicGates = &basicGates;
 
 	Load( "Levels/_TestLevel.txt" );
@@ -26,7 +31,7 @@ void Gameplay::Update()
 	const auto dt = ft.Mark();
 	updateInfo.dt = dt;
 
-	guy.Update( kbd,dt );
+	guy.Update( updateInfo );
 
 	for( auto& arrow : arrows )
 	{
@@ -45,7 +50,6 @@ void Gameplay::Update()
 
 	// TODO: Level Objects are only visible if light is on them.
 	// TODO: Exit loads next level.
-	// TODO: Player can't walk on top of lanterns and such.
 	// TODO: Different color gates.
 	// TODO: Some test levels.
 
