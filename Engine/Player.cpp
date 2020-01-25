@@ -2,7 +2,7 @@
 
 Player::Player( const Vei2& pos,const Level& level )
 	:
-	LevelObject( pos ),
+	LevelObject( pos,Colors::White,true ),
 	level( level )
 {}
 
@@ -51,7 +51,8 @@ void Player::Update( UpdateInfo& info )
 
 void Player::Draw( TileMap& map ) const
 {
-	map.PutPixel( int( pos.x ),int( pos.y ),Colors::White );
+	// map.PutPixel( int( pos.x ),int( pos.y ),Colors::White );
+	LevelObject::Draw( map );
 
 	for( const auto& arrow : arrows )
 	{

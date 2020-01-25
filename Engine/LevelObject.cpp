@@ -1,13 +1,18 @@
 #include "LevelObject.h"
 
-LevelObject::LevelObject( const Vei2& pos )
+LevelObject::LevelObject( const Vei2& pos,Color col,bool visible )
 	:
-	pos( pos )
+	pos( pos ),
+	col( col ),
+	visible( visible )
 {}
 
 void LevelObject::Draw( TileMap& map ) const
 {
-	map.PutPixel( pos.x,pos.y,Colors::Magenta );
+	if( visible )
+	{
+		map.PutPixel( pos.x,pos.y,col );
+	}
 }
 
 void LevelObject::Destroy()

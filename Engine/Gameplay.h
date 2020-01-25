@@ -5,7 +5,6 @@
 #include "Player.h"
 #include "Level.h"
 #include "FrameTimer.h"
-#include "Enemy.h"
 #include "Lantern.h"
 #include "Door.h"
 #include "BasicGate.h"

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "LevelObject.h"
+#include "ColorStyle.h"
 
 class Door
 	:
@@ -8,6 +9,6 @@ class Door
 {
 public:
 	Door( const Vei2& pos );
-
-	void Draw( TileMap& tilemap ) const override;
+private:
+	static constexpr ColorStyle style = { Colors::MakeRGB( 50,210,210 ),20 };
 };

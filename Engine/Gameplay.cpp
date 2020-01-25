@@ -49,6 +49,7 @@ void Gameplay::Update()
 	}
 
 	// TODO: Level Objects are only visible if light is on them.
+	// TODO: Arrows light up objects.
 	// TODO: One big vector holding vectors of level objects.
 	// TODO: Move drawing back into levelobject with color member.
 	// TODO: Exit loads next level.

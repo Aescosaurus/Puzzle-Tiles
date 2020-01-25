@@ -84,9 +84,6 @@
     <ClInclude Include="Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ChiliUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -156,9 +153,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Arrow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LevelObject.cpp">

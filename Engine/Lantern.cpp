@@ -2,11 +2,9 @@
 
 Lantern::Lantern( const Vei2& pos )
 	:
-	LevelObject( pos ),
-	colMap( ColorMap::CreateCircle( lightRadius,style,0.2f ) )
-{
-	SetVisible();
-}
+	LevelObject( pos,tileStyle.Generate(),true ),
+	colMap( ColorMap::CreateCircle( lightRadius,mapStyle,0.2f ) )
+{}
 
 void Lantern::Update( UpdateInfo& info )
 {
@@ -22,7 +20,8 @@ void Lantern::Update( UpdateInfo& info )
 
 void Lantern::Draw( TileMap& map ) const
 {
-	map.PutPixel( pos.x,pos.y,Colors::Orange );
+	// map.PutPixel( pos.x,pos.y,Colors::Orange );
+	LevelObject::Draw( map );
 
 	if( lit )
 	{

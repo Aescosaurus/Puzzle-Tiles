@@ -2,7 +2,7 @@
 
 Arrow::Arrow( const Vei2& pos,const Vei2& vel )
 	:
-	LevelObject( pos ),
+	LevelObject( pos,cs.Generate(),true ),
 	vel( vel ),
 	colMap( ColorMap::CreateCircle( lightArea,cs,0.1f ) )
 {}
@@ -24,7 +24,8 @@ void Arrow::Update( UpdateInfo& info )
 
 void Arrow::Draw( TileMap& tilemap ) const
 {
-	tilemap.PutPixel( int( pos.x ),int( pos.y ),Colors::Yellow );
+	// tilemap.PutPixel( int( pos.x ),int( pos.y ),Colors::Yellow );
+	LevelObject::Draw( tilemap );
 
 	// tilemap.DrawLightCircle( pos.x,pos.y,2,
 	// 	Colors::MakeRGB( 200,200,140 ),0.5f );

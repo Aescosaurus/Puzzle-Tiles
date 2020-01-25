@@ -24,7 +24,7 @@ public:
 		// PLevelObjectArr* lanterns;
 	};
 public:
-	LevelObject( const Vei2& pos );
+	LevelObject( const Vei2& pos,Color col,bool visible = false );
 
 	virtual void Update( UpdateInfo& info ) {}
 	virtual void Draw( TileMap& map ) const;
@@ -42,6 +42,7 @@ private:
 	bool IsEmpty( const Vei2& pos,PLevelObjectArr* arr ) const;
 protected:
 	Vei2 pos;
+	Color col;
 	bool visible = false;
 private:
 	bool destroyed = false;
