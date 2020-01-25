@@ -36,5 +36,8 @@ void BasicGate::Update( UpdateInfo& info )
 
 void BasicGate::Draw( TileMap& tilemap ) const
 {
-	tilemap.PutPixel( pos.x,pos.y,col );
+	if( visible )
+	{
+		tilemap.PutPixel( pos.x,pos.y,col );
+	}
 }

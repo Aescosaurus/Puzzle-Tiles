@@ -31,6 +31,7 @@ public:
 
 	void Destroy();
 	void SetPos( const Vei2& pos );
+	void SetVisible();
 
 	const Vei2& GetPos() const;
 	bool IsDestroyed() const;
@@ -41,6 +42,7 @@ private:
 	bool IsEmpty( const Vei2& pos,PLevelObjectArr* arr ) const;
 protected:
 	Vei2 pos;
+	bool visible = false;
 private:
 	bool destroyed = false;
 };

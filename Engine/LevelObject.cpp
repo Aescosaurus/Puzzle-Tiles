@@ -20,6 +20,11 @@ void LevelObject::SetPos( const Vei2& pos )
 	this->pos = pos;
 }
 
+void LevelObject::SetVisible()
+{
+	visible = true;
+}
+
 const Vei2& LevelObject::GetPos() const
 {
 	return( pos );

@@ -3,8 +3,10 @@
 Lantern::Lantern( const Vei2& pos )
 	:
 	LevelObject( pos ),
-	colMap( ColorMap::CreateCircle( 5,style,0.2f ) )
-{}
+	colMap( ColorMap::CreateCircle( lightRadius,style,0.2f ) )
+{
+	SetVisible();
+}
 
 void Lantern::Update( UpdateInfo& info )
 {
@@ -12,7 +14,7 @@ void Lantern::Update( UpdateInfo& info )
 	{
 		if( arrow->GetPos() == pos )
 		{
-			Light();
+			Light( info );
 			arrow->Destroy();
 		}
 	}
@@ -31,7 +33,29 @@ void Lantern::Draw( TileMap& map ) const
 	}
 }
 
-void Lantern::Light()
+void Lantern::Light( UpdateInfo& info )
 {
 	lit = true;
+
+	SetItemVisible( *info.door );
+	SetArrVisible( info.arrows );
+	SetArrVisible( info.lanterns );
+	SetArrVisible( info.basicGates );
+}
+
+void Lantern::SetArrVisible( PLevelObjectArr* arr ) const
+{
+	for( auto& item : *arr )
+	{
+		SetItemVisible( *item );
+	}
+}
+
+void Lantern::SetItemVisible( LevelObject& item ) const
+{
+	static constexpr int radSq = lightRadius * lightRadius;
+	if( ( item.GetPos() - pos ).GetLengthSq() <= radSq )
+	{
+		item.SetVisible();
+	}
 }
