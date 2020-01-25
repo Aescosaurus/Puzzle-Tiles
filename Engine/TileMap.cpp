@@ -28,14 +28,20 @@ void TileMap::Draw( Graphics& gfx ) const
 	{
 		for( int x = 0; x < size; ++x )
 		{
+			// gfx.DrawRect( padding + x * tileSize,y * tileSize,
+			// 	tileSize,tileSize,
+			// 	tiles[y * size + x] );
+			// 
+			// gfx.DrawRectAlpha( padding + x * tileSize,y * tileSize,
+			// 	tileSize,tileSize,
+			// 	lightMap[y * size + x].first,
+			// 	lightMap[y * size + x].second );
+			const auto color = Colors::Interpolate(
+				tiles[y * size + x],lightMap[y * size + x].first,
+				lightMap[y * size + x].second );
 			gfx.DrawRect( padding + x * tileSize,y * tileSize,
 				tileSize,tileSize,
-				tiles[y * size + x] );
-
-			gfx.DrawRectAlpha( padding + x * tileSize,y * tileSize,
-				tileSize,tileSize,
-				lightMap[y * size + x].first,
-				lightMap[y * size + x].second );
+				color );
 		}
 	}
 }

@@ -45,7 +45,6 @@ void Gameplay::Update()
 
 	// TODO: Level Objects are only visible if light is on them.
 	// TODO: Destroy arrows once they exit the screen.
-	// TODO: Optimize DrawRectAlpha but in tilemap.
 	// TODO: Exit loads next level.
 	// TODO: Player can't walk on top of lanterns and such.
 
