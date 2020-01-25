@@ -7,6 +7,18 @@ Lantern::Lantern( const Vei2& pos )
 	colMap( ColorMap::CreateCircle( 5,style,0.2f ) )
 {}
 
+void Lantern::Update( UpdateInfo& info )
+{
+	for( auto& arrow : *info.arrows )
+	{
+		if( arrow->GetPos() == pos )
+		{
+			Light();
+			arrow->Destroy();
+		}
+	}
+}
+
 void Lantern::Draw( TileMap& map ) const
 {
 	map.PutPixel( pos.x,pos.y,Colors::Orange );

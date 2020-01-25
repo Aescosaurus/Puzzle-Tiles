@@ -37,13 +37,15 @@ void Player::Update( const Keyboard& kbd,float dt )
 	if( refire.Update( dt ) && shotVel != Vei2::Zero() )
 	{
 		refire.Reset();
-		arrows.emplace_back( Arrow{ pos,shotVel } );
+		// arrows.emplace_back( Arrow{ pos,shotVel } );
+		arrows.emplace_back( std::make_unique<Arrow>(
+			pos,shotVel ) );
 	}
 
-	for( auto& arrow : arrows )
-	{
-		arrow.Update( dt );
-	}
+	// for( auto& arrow : arrows )
+	// {
+	// 	arrow->Update( dt );
+	// }
 }
 
 void Player::Draw( TileMap& map ) const
@@ -52,7 +54,7 @@ void Player::Draw( TileMap& map ) const
 
 	for( const auto& arrow : arrows )
 	{
-		arrow.Draw( map );
+		arrow->Draw( map );
 	}
 }
 
@@ -66,7 +68,7 @@ const Vei2& Player::GetPos() const
 	return( pos );
 }
 
-std::vector<Arrow>& Player::GetArrows()
+PLevelObjectArr& Player::GetArrows()
 {
 	return( arrows );
 }

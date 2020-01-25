@@ -20,12 +20,12 @@ public:
 	void SetPos( const Vei2& pos );
 
 	const Vei2& GetPos() const;
-	std::vector<Arrow>& GetArrows();
+	PLevelObjectArr& GetArrows();
 private:
 	static constexpr float speed = 12.0f;
 	const Level& level;
 	Vei2 pos;
-	std::vector<Arrow> arrows;
+	PLevelObjectArr arrows;
 	Timer refire = 0.45f;
 	bool canMove = false;
 };

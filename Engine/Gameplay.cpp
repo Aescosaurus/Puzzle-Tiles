@@ -7,8 +7,11 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 	kbd( kbd ),
 	tilemap( tilemap ),
 	guy( Vei2{ 0,0 },level ),
+	arrows( guy.GetArrows() ),
 	door( Vei2{ 0,0 } )
 {
+	updateInfo.arrows = &arrows;
+
 	Load( "Levels/Level1.txt" );
 	// enemies.emplace_back( Enemy{ Vei2{ 5,5 } } );
 	// for( int i = 0; i < 4; ++i )
@@ -20,49 +23,26 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 void Gameplay::Update()
 {
 	const auto dt = ft.Mark();
+	updateInfo.dt = dt;
+
 	guy.Update( kbd,dt );
-
-	auto& arrows = guy.GetArrows();
-
-	// const auto& playerPos = guy.GetPos();
-	// for( auto& enemy : enemies )
-	// {
-	// 	enemy.Update( playerPos,dt );
-	// 
-	// 	for( auto& arrow : arrows )
-	// 	{
-	// 		if( arrow.GetPos() == enemy.GetPos() )
-	// 		{
-	// 			arrow.Destroy();
-	// 			enemy.Destroy();
-	// 			// tilemap.DrawLightRect( 0,0,
-	// 			// 	TileMap::size,TileMap::size,
-	// 			// 	Colors::White,0.9f );
-	// 		}
-	// 	}
-	// }
 
 	for( auto& arrow : arrows )
 	{
-		const auto& arrowPos = arrow.GetPos();
-		for( auto& lantern : lanterns )
-		{
-			if( arrowPos == lantern.GetPos() )
-			{
-				arrow.Destroy();
-				lantern.Light();
-			}
-		}
+		arrow->Update( updateInfo );
 	}
 
-	// TODO: Put stuff from game into functions in each object.
+	for( auto& lantern : lanterns )
+	{
+		lantern->Update( updateInfo );
+	}
+
 	// TODO: Level Objects are only visible if light is on them.
 	// TODO: Destroy arrows once they exit the screen.
-	// TODO: Finish up level editor.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	chili::remove_erase_if( arrows,isDestroyed );
-	chili::remove_erase_if( enemies,isDestroyed );
+	// chili::remove_erase_if( enemies,isDestroyed );
 }
 
 void Gameplay::Draw()
@@ -70,14 +50,14 @@ void Gameplay::Draw()
 	level.Draw( tilemap );
 	guy.Draw( tilemap );
 
-	for( const auto& enemy : enemies )
-	{
-		enemy.Draw( tilemap );
-	}
+	// for( const auto& enemy : enemies )
+	// {
+	// 	enemy.Draw( tilemap );
+	// }
 
 	for( const auto& lantern : lanterns )
 	{
-		lantern.Draw( tilemap );
+		lantern->Draw( tilemap );
 	}
 }
 
@@ -106,7 +86,8 @@ void Gameplay::Load( const std::string& levelName )
 			floorVal = 1;
 			break;
 		case 'l':
-			lanterns.emplace_back( Lantern{ pos } );
+			// lanterns.emplace_back( Lantern{ pos } );
+			lanterns.emplace_back( std::make_unique<Lantern>( pos ) );
 			floorVal = 1;
 			break;
 		case '1':

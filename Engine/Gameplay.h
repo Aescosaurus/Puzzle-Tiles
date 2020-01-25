@@ -24,8 +24,10 @@ private:
 
 	FrameTimer ft;
 	Level level;
+	LevelObject::UpdateInfo updateInfo;
 	Player guy;
-	std::vector<Enemy> enemies;
-	std::vector<Lantern> lanterns;
+	PLevelObjectArr& arrows;
+	// std::vector<Enemy> enemies;
+	PLevelObjectArr lanterns;
 	Door door;
 };

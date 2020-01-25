@@ -12,8 +12,9 @@ class Lantern
 public:
 	Lantern( const Vei2& pos );
 
+	void Update( UpdateInfo& info ) override;
 	void Draw( TileMap& map ) const override;
-
+private:
 	void Light();
 private:
 	bool lit = false;

@@ -14,7 +14,7 @@ class Arrow
 public:
 	Arrow( const Vei2& pos,const Vei2& vel );
 
-	void Update( float dt );
+	void Update( UpdateInfo& info ) override;
 	void Draw( TileMap& tilemap ) const override;
 private:
 	Vei2 vel;

@@ -8,9 +8,9 @@ Arrow::Arrow( const Vei2& pos,const Vei2& vel )
 	colMap( ColorMap::CreateCircle( 2,cs,0.1f ) )
 {}
 
-void Arrow::Update( float dt )
+void Arrow::Update( UpdateInfo& info )
 {
-	if( moveSpeed.Update( dt ) )
+	if( moveSpeed.Update( info.dt ) )
 	{
 		moveSpeed.Reset();
 		pos += vel;

@@ -2,12 +2,24 @@
 
 #include "Vec2.h"
 #include "TileMap.h"
+#include <memory>
 
 class LevelObject
 {
 public:
+	class UpdateInfo
+	{
+	private:
+		typedef std::vector<std::unique_ptr<LevelObject>> PLevelObjectArr;
+	public:
+		float dt;
+		PLevelObjectArr* arrows;
+		// PLevelObjectArr* lanterns;
+	};
+public:
 	LevelObject( const Vei2& pos );
 
+	virtual void Update( UpdateInfo& info ) {}
 	virtual void Draw( TileMap& map ) const;
 
 	void Destroy();
@@ -20,3 +32,5 @@ protected:
 private:
 	bool destroyed = false;
 };
+
+typedef std::vector<std::unique_ptr<LevelObject>> PLevelObjectArr;
