@@ -10,9 +10,22 @@ class BasicGate
 	public LevelObject
 {
 public:
-	BasicGate( const Vei2& pos );
+	enum class GateType
+	{
+		Red,
+		Pink,
+		Purple
+	};
+public:
+	BasicGate( const Vei2& pos,GateType type  );
 
 	void Update( UpdateInfo& info ) override;
 private:
-	static constexpr ColorStyle style = { Colors::MakeRGB( 230,50,50 ),20 };
+	// static constexpr ColorStyle style = { Colors::MakeRGB( 230,50,50 ),20 };
+	static constexpr ColorStyle styles[] =
+	{
+		{ Colors::MakeRGB( 232,12,88 ),20 },
+		{ Colors::MakeRGB( 255,87,243 ),20 },
+		{ Colors::MakeRGB( 135,12,232 ),20 }
+	};
 };

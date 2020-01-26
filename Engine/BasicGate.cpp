@@ -1,8 +1,8 @@
 #include "BasicGate.h"
 
-BasicGate::BasicGate( const Vei2& pos )
+BasicGate::BasicGate( const Vei2& pos,GateType type )
 	:
-	LevelObject( pos,style.Generate() )
+	LevelObject( pos,styles[int( type )].Generate() )
 {}
 
 void BasicGate::Update( UpdateInfo& info )
