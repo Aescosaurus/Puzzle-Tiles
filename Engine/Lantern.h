@@ -17,9 +17,6 @@ public:
 
 	void Light( UpdateInfo& info );
 private:
-	void SetArrVisible( PLevelObjectArr* arr ) const;
-	void SetItemVisible( LevelObject& obj ) const;
-private:
 	static constexpr int lightRadius = 5;
 	bool lit = false;
 	static constexpr ColorStyle mapStyle = { Colors::MakeRGB( 240,190,110 ),10 };

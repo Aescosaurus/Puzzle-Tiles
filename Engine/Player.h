@@ -15,7 +15,8 @@ class Player
 	public LevelObject
 {
 public:
-	Player( const Vei2& pos,const Level& level );
+	Player( const Vei2& pos,const Level& level,
+		PLevelObjectArr& arrows );
 
 	void Update( UpdateInfo& info ) override;
 	void Draw( TileMap& map ) const override;
@@ -28,7 +29,7 @@ private:
 	static constexpr float speed = 12.0f;
 	const Level& level;
 	// Vei2 pos;
-	PLevelObjectArr arrows;
+	PLevelObjectArr& arrows;
 	Timer refire = 0.45f;
 	bool canMove = false;
 };

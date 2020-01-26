@@ -1,18 +1,20 @@
 #include "Player.h"
 
-Player::Player( const Vei2& pos,const Level& level )
+Player::Player( const Vei2& pos,const Level& level,
+	PLevelObjectArr& arrows )
 	:
 	LevelObject( pos,Colors::White,true ),
-	level( level )
+	level( level ),
+	arrows( arrows )
 {}
 
 void Player::Update( UpdateInfo& info )
 {
 	auto vel = Vei2::Zero();
-	if( info.kbd->KeyIsPressed( 'W' ) ) --vel.y;
-	if( info.kbd->KeyIsPressed( 'S' ) ) ++vel.y;
-	if( info.kbd->KeyIsPressed( 'A' ) ) --vel.x;
-	if( info.kbd->KeyIsPressed( 'D' ) ) ++vel.x;
+	if( info.kbd.KeyIsPressed( 'W' ) ) --vel.y;
+	if( info.kbd.KeyIsPressed( 'S' ) ) ++vel.y;
+	if( info.kbd.KeyIsPressed( 'A' ) ) --vel.x;
+	if( info.kbd.KeyIsPressed( 'D' ) ) ++vel.x;
 
 	if( vel != Vei2::Zero() )
 	{
@@ -31,10 +33,10 @@ void Player::Update( UpdateInfo& info )
 	}
 
 	Vei2 shotVel = Vei2::Zero();
-	if( info.kbd->KeyIsPressed( VK_UP ) ) --shotVel.y;
-	if( info.kbd->KeyIsPressed( VK_DOWN ) ) ++shotVel.y;
-	if( info.kbd->KeyIsPressed( VK_LEFT ) ) --shotVel.x;
-	if( info.kbd->KeyIsPressed( VK_RIGHT ) ) ++shotVel.x;
+	if( info.kbd.KeyIsPressed( VK_UP ) ) --shotVel.y;
+	if( info.kbd.KeyIsPressed( VK_DOWN ) ) ++shotVel.y;
+	if( info.kbd.KeyIsPressed( VK_LEFT ) ) --shotVel.x;
+	if( info.kbd.KeyIsPressed( VK_RIGHT ) ) ++shotVel.x;
 	if( refire.Update( info.dt ) && shotVel != Vei2::Zero() )
 	{
 		refire.Reset();

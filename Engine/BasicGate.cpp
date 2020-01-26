@@ -7,13 +7,13 @@ BasicGate::BasicGate( const Vei2& pos )
 
 void BasicGate::Update( UpdateInfo& info )
 {
-	for( auto& arrow : *info.arrows )
+	for( auto& arrow : info.levelObjects[int( Type::Arrow )] )
 	{
 		if( arrow->GetPos() == pos )
 		{
 			arrow->Destroy();
 			bool isTrigger = true;
-			for( const auto& gate : *info.basicGates )
+			for( const auto& gate : info.levelObjects[int( Type::BasicGate )] )
 			{
 				const auto& gatePos = gate->GetPos();
 				if( gatePos == pos + Vei2::Up() ||
@@ -27,7 +27,7 @@ void BasicGate::Update( UpdateInfo& info )
 			}
 			if( isTrigger )
 			{
-				info.basicGates->clear();
+				info.levelObjects[int( Type::BasicGate )].clear();
 			}
 		}
 	}

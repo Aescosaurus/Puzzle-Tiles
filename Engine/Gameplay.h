@@ -25,9 +25,10 @@ private:
 	FrameTimer ft;
 	Level level;
 	LevelObject::UpdateInfo updateInfo;
+	std::vector<PLevelObjectArr> levelObjects;
 	Player guy;
-	PLevelObjectArr& arrows;
-	PLevelObjectArr lanterns;
-	PLevelObjectArr basicGates;
+	// PLevelObjectArr arrows;
+	// PLevelObjectArr lanterns;
+	// PLevelObjectArr basicGates;
 	Door door;
 };

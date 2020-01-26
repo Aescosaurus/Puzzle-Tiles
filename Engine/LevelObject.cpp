@@ -42,21 +42,19 @@ bool LevelObject::IsDestroyed() const
 
 bool LevelObject::CheckPos( const Vei2& pos,const UpdateInfo& info ) const
 {
-	if( info.player->GetPos() == pos ) return( false );
-	if( info.door->GetPos() == pos ) return( false );
+	if( info.player.GetPos() == pos ) return( false );
+	if( info.door.GetPos() == pos ) return( false );
 
-	if( !IsEmpty( pos,info.arrows ) ) return( false );
-	if( !IsEmpty( pos,info.lanterns ) ) return( false );
-	if( !IsEmpty( pos,info.basicGates ) ) return( false );
-
-	return( true );
-}
-
-bool LevelObject::IsEmpty( const Vei2& pos,PLevelObjectArr* arr ) const
-{
-	for( auto& item : *arr )
+	// if( !IsEmpty( pos,info.arrows ) ) return( false );
+	// if( !IsEmpty( pos,info.lanterns ) ) return( false );
+	// if( !IsEmpty( pos,info.basicGates ) ) return( false );
+	for( auto& vec : info.levelObjects )
 	{
-		if( item->GetPos() == pos ) return( false );
+		for( auto& item : vec )
+		{
+			if( item->GetPos() == pos ) return( false );
+		}
 	}
+
 	return( true );
 }

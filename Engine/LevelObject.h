@@ -11,16 +11,25 @@ typedef std::vector<std::unique_ptr<LevelObject>> PLevelObjectArr;
 class LevelObject
 {
 public:
+	enum class Type
+	{
+		Arrow = 0,
+		Lantern,
+		BasicGate,
+		Max
+	};
+public:
 	class UpdateInfo
 	{
 	public:
-		const Keyboard* kbd;
+		const Keyboard& kbd;
 		float dt;
-		LevelObject* player;
-		LevelObject* door;
-		PLevelObjectArr* arrows;
-		PLevelObjectArr* lanterns;
-		PLevelObjectArr* basicGates;
+		LevelObject& player;
+		LevelObject& door;
+		std::vector<PLevelObjectArr>& levelObjects;
+		// PLevelObjectArr* arrows;
+		// PLevelObjectArr* lanterns;
+		// PLevelObjectArr* basicGates;
 		// PLevelObjectArr* lanterns;
 	};
 public:
@@ -37,9 +46,6 @@ public:
 	bool IsDestroyed() const;
 	// Returns true if pos has nothing on top of it.
 	bool CheckPos( const Vei2& pos,const UpdateInfo& info ) const;
-private:
-	// True if arr does not contain object on pos.
-	bool IsEmpty( const Vei2& pos,PLevelObjectArr* arr ) const;
 protected:
 	Vei2 pos;
 	Color col;

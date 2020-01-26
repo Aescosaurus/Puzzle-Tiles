@@ -8,7 +8,7 @@ Lantern::Lantern( const Vei2& pos )
 
 void Lantern::Update( UpdateInfo& info )
 {
-	for( auto& arrow : *info.arrows )
+	for( auto& arrow : info.levelObjects[int( Type::Arrow )] )
 	{
 		if( arrow->GetPos() == pos )
 		{
@@ -36,25 +36,15 @@ void Lantern::Light( UpdateInfo& info )
 {
 	lit = true;
 
-	SetItemVisible( *info.door );
-	SetArrVisible( info.arrows );
-	SetArrVisible( info.lanterns );
-	SetArrVisible( info.basicGates );
-}
-
-void Lantern::SetArrVisible( PLevelObjectArr* arr ) const
-{
-	for( auto& item : *arr )
-	{
-		SetItemVisible( *item );
-	}
-}
-
-void Lantern::SetItemVisible( LevelObject& item ) const
-{
 	static constexpr int radSq = lightRadius * lightRadius;
-	if( ( item.GetPos() - pos ).GetLengthSq() <= radSq )
+	for( auto& vec : info.levelObjects )
 	{
-		item.SetVisible();
+		for( auto& obj : vec )
+		{
+			if( ( obj->GetPos() - pos ).GetLengthSq() <= radSq )
+			{
+				obj->SetVisible();
+			}
+		}
 	}
 }

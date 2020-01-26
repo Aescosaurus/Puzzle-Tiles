@@ -2,5 +2,5 @@
 
 Door::Door( const Vei2& pos )
 	:
-	LevelObject( pos,style.Generate() )
+	LevelObject( pos,style.Generate(),true )
 {}

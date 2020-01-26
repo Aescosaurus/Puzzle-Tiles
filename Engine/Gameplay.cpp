@@ -6,17 +6,11 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 	:
 	kbd( kbd ),
 	tilemap( tilemap ),
-	guy( Vei2{ 0,0 },level ),
-	arrows( guy.GetArrows() ),
+	updateInfo{ kbd,0.0f,guy,door,levelObjects },
+	levelObjects{ int( LevelObject::Type::Max ) },
+	guy( Vei2{ 0,0 },level,levelObjects[int( LevelObject::Type::Arrow )] ),
 	door( Vei2{ 0,0 } )
 {
-	updateInfo.kbd = &kbd;
-	updateInfo.dt = 0.0f;
-	updateInfo.player = &guy;
-	updateInfo.door = &door;
-	updateInfo.arrows = &arrows;
-	updateInfo.lanterns = &lanterns;
-	updateInfo.basicGates = &basicGates;
 
 	Load( "Levels/_TestLevel.txt" );
 	// enemies.emplace_back( Enemy{ Vei2{ 5,5 } } );
@@ -33,33 +27,41 @@ void Gameplay::Update()
 
 	guy.Update( updateInfo );
 
-	for( auto& arrow : arrows )
+	// for( auto& arrow : arrows )
+	// {
+	// 	arrow->Update( updateInfo );
+	// }
+	// 
+	// for( auto& lantern : lanterns )
+	// {
+	// 	lantern->Update( updateInfo );
+	// }
+	// 
+	// for( auto& gate : basicGates )
+	// {
+	// 	gate->Update( updateInfo );
+	// }
+	for( auto& vec : levelObjects )
 	{
-		arrow->Update( updateInfo );
-	}
-
-	for( auto& lantern : lanterns )
-	{
-		lantern->Update( updateInfo );
-	}
-
-	for( auto& gate : basicGates )
-	{
-		gate->Update( updateInfo );
+		for( auto& levelObject : vec )
+		{
+			levelObject->Update( updateInfo );
+		}
 	}
 
 	// TODO: Level Objects are only visible if light is on them.
 	// TODO: Arrows light up objects.
-	// TODO: One big vector holding vectors of level objects.
-	// TODO: Move drawing back into levelobject with color member.
 	// TODO: Exit loads next level.
 	// TODO: Different color gates.
 	// TODO: Some test levels.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
-	chili::remove_erase_if( arrows,isDestroyed );
-	chili::remove_erase_if( lanterns,isDestroyed );
-	// chili::remove_erase_if( enemies,isDestroyed );
+	// chili::remove_erase_if( arrows,isDestroyed );
+	// chili::remove_erase_if( lanterns,isDestroyed );
+	for( auto& vec : levelObjects )
+	{
+		chili::remove_erase_if( vec,isDestroyed );
+	}
 }
 
 void Gameplay::Draw()
@@ -67,19 +69,22 @@ void Gameplay::Draw()
 	level.Draw( tilemap );
 	guy.Draw( tilemap );
 
-	// for( const auto& enemy : enemies )
+	// for( const auto& lantern : lanterns )
 	// {
-	// 	enemy.Draw( tilemap );
+	// 	lantern->Draw( tilemap );
 	// }
-
-	for( const auto& lantern : lanterns )
+	// 
+	// for( const auto& gate : basicGates )
+	// {
+	// 	gate->Draw( tilemap );
+	// }
+	
+	for( auto& vec : levelObjects )
 	{
-		lantern->Draw( tilemap );
-	}
-
-	for( const auto& gate : basicGates )
-	{
-		gate->Draw( tilemap );
+		for( auto& levelObject : vec )
+		{
+			levelObject->Draw( tilemap );
+		}
 	}
 
 	door.Draw( tilemap );
@@ -112,13 +117,16 @@ void Gameplay::Load( const std::string& levelName )
 			door.SetPos( pos );
 			floorVal = 1;
 			break;
-		case 'g':
-			basicGates.emplace_back( std::make_unique<BasicGate>( pos ) );
+		case 'l':
+			// lanterns.emplace_back( std::make_unique<Lantern>( pos ) );
+			levelObjects[int( LevelObject::Type::Lantern )].emplace_back(
+				std::make_unique<Lantern>( pos ) );
 			floorVal = 1;
 			break;
-		case 'l':
-			// lanterns.emplace_back( Lantern{ pos } );
-			lanterns.emplace_back( std::make_unique<Lantern>( pos ) );
+		case 'g':
+			// basicGates.emplace_back( std::make_unique<BasicGate>( pos ) );
+			levelObjects[int( LevelObject::Type::BasicGate )].emplace_back(
+				std::make_unique<BasicGate>( pos ) );
 			floorVal = 1;
 			break;
 		case '\n':
