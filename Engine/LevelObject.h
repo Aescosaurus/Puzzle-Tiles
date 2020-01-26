@@ -46,6 +46,7 @@ public:
 	bool IsDestroyed() const;
 	// Returns true if pos has nothing on top of it.
 	bool CheckPos( const Vei2& pos,const UpdateInfo& info ) const;
+	bool IsVisible() const;
 protected:
 	Vei2 pos;
 	Color col;

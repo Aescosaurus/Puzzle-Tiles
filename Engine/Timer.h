@@ -19,6 +19,10 @@ public:
 	{
 		curTime = 0.0f;
 	}
+	void Reset2()
+	{
+		curTime -= maxTime;
+	}
 
 	bool IsDone() const
 	{

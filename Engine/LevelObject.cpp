@@ -58,3 +58,8 @@ bool LevelObject::CheckPos( const Vei2& pos,const UpdateInfo& info ) const
 
 	return( true );
 }
+
+bool LevelObject::IsVisible() const
+{
+	return( visible );
+}

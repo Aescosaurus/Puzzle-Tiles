@@ -11,8 +11,20 @@ void Arrow::Update( UpdateInfo& info )
 {
 	if( moveSpeed.Update( info.dt ) )
 	{
-		moveSpeed.Reset();
+		moveSpeed.Reset2();
 		pos += vel;
+
+		static constexpr auto lenSq = lightArea * lightArea;
+		for( auto& vec : info.levelObjects )
+		{
+			for( auto& item : vec )
+			{
+				if( ( item->GetPos() - pos ).GetLengthSq() <= lenSq )
+				{
+					item->SetVisible();
+				}
+			}
+		}
 	}
 
 	if( !Graphics::ScreenRect.GetExpanded( lightArea )

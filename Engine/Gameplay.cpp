@@ -49,8 +49,6 @@ void Gameplay::Update()
 		}
 	}
 
-	// TODO: Level Objects are only visible if light is on them.
-	// TODO: Arrows light up objects.
 	// TODO: Exit loads next level.
 	// TODO: Different color gates.
 	// TODO: Some test levels.
