@@ -95,8 +95,12 @@ Color LevelEditor::Tile2Color( char tile ) const
 		return( Colors::Cyan );
 	case 'l':
 		return( Colors::Orange );
-	case 'g':
+	case 'r':
 		return( Colors::Red );
+	case 'i':
+		return( Colors::Pink );
+	case 'u':
+		return( Colors::Purple );
 	}
 	assert( false );
 	return( Colors::Magenta );

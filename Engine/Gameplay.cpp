@@ -61,6 +61,11 @@ void Gameplay::Draw()
 
 void Gameplay::Load( const std::string& levelName )
 {
+	for( auto& vec : levelObjects )
+	{
+		vec.clear();
+	}
+
 	std::ifstream in{ levelName };
 	assert( in.good() );
 
@@ -89,6 +94,11 @@ void Gameplay::Load( const std::string& levelName )
 		case 'l':
 			levelObjects[int( LevelObject::Type::Lantern )].emplace_back(
 				std::make_unique<Lantern>( pos ) );
+			floorVal = 1;
+			break;
+		case 'L':
+			levelObjects[int( LevelObject::Type::Lantern )].emplace_back(
+				std::make_unique<Lantern>( pos,true ) );
 			floorVal = 1;
 			break;
 		case 'r':

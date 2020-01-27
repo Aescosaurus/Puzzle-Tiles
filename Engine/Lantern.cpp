@@ -1,13 +1,20 @@
 #include "Lantern.h"
 
-Lantern::Lantern( const Vei2& pos )
+Lantern::Lantern( const Vei2& pos,bool lit )
 	:
 	LevelObject( pos,tileStyle.Generate(),true ),
-	colMap( ColorMap::CreateCircle( lightRadius,mapStyle,0.2f ) )
+	colMap( ColorMap::CreateCircle( lightRadius,mapStyle,0.2f ) ),
+	willLight( lit )
 {}
 
 void Lantern::Update( UpdateInfo& info )
 {
+	if( willLight )
+	{
+		Light( info );
+		willLight = false;
+	}
+
 	for( auto& arrow : info.levelObjects[int( Type::Arrow )] )
 	{
 		if( arrow->GetPos() == pos )
