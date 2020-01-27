@@ -16,8 +16,9 @@ public:
 	void Draw( TileMap& map ) const override;
 
 	void Light( UpdateInfo& info );
-private:
+public:
 	static constexpr int lightRadius = 5;
+private:
 	bool lit = false;
 	bool willLight = false;
 	static constexpr ColorStyle mapStyle = { Colors::MakeRGB( 240,190,110 ),10 };

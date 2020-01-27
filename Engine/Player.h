@@ -26,6 +26,9 @@ public:
 	// const Vei2& GetPos() const;
 	// PLevelObjectArr& GetArrows();
 private:
+	// Tells whether player can move into loc.
+	bool CanMove( const Vei2& loc,UpdateInfo& info ) const;
+private:
 	static constexpr float speed = 12.0f;
 	const Level& level;
 	// Vei2 pos;

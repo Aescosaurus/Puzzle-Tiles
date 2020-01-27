@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Lantern.h"
 
 Player::Player( const Vei2& pos,const Level& level,
 	PLevelObjectArr& arrows )
@@ -18,10 +19,7 @@ void Player::Update( UpdateInfo& info )
 
 	if( vel != Vei2::Zero() )
 	{
-		if( canMove && level.GetTile( pos + vel ) !=
-			Level::TileType::Wall &&
-			( CheckPos( pos + vel,info ) ||
-			pos + vel == info.door.GetPos() ) )
+		if( CanMove( pos + vel,info ) )
 		{
 			if( vel.x != 0 ) pos += vel.X();
 			else pos += vel.Y();
@@ -61,6 +59,24 @@ void Player::Draw( TileMap& map ) const
 	{
 		arrow->Draw( map );
 	}
+}
+
+bool Player::CanMove( const Vei2& loc,UpdateInfo& info ) const
+{
+	bool overlapsLight = false;
+	for( auto& lantern : info.levelObjects[int( Type::Lantern )] )
+	{
+		if( ( loc - lantern->GetPos() ).GetLengthSq() <=
+			Lantern::lightRadius * Lantern::lightRadius )
+		{
+			overlapsLight = true;
+			break;
+		}
+	}
+	return( canMove &&
+		level.GetTile( loc ) != Level::TileType::Wall &&
+		( CheckPos( loc,info ) || loc == info.door.GetPos() ) &&
+		overlapsLight );
 }
 
 // void Player::SetPos( const Vei2& pos )
