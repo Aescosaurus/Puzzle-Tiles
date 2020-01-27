@@ -44,6 +44,14 @@ void Game::UpdateModel()
 	switch( gameState )
 	{
 	case State::Menu:
+		if( wnd.kbd.KeyIsPressed( VK_SPACE ) )
+		{
+			gameState = State::Gameplay;
+		}
+		if( wnd.kbd.KeyIsPressed( 'E' ) )
+		{
+			gameState = State::LevelEditor;
+		}
 		break;
 	case State::Gameplay:
 		gameplay.Update();
