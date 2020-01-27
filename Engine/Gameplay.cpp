@@ -11,7 +11,7 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 	guy( Vei2{ 0,0 },level,levelObjects[int( LevelObject::Type::Arrow )] ),
 	door( Vei2{ 0,0 } )
 {
-	Load( "Levels/_TestLevel.txt" );
+	Load( GenerateLevelName() );
 }
 
 void Gameplay::Update()
@@ -29,7 +29,11 @@ void Gameplay::Update()
 		}
 	}
 
-	// TODO: Exit loads next level.
+	if( guy.GetPos() == door.GetPos() )
+	{
+		Load( GenerateLevelName() );
+	}
+
 	// TODO: Some test levels.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
@@ -114,4 +118,11 @@ void Gameplay::Load( const std::string& levelName )
 	}
 
 	level.Load( tiles );
+
+	++curLevel;
+}
+
+std::string Gameplay::GenerateLevelName() const
+{
+	return( "Levels/Level" + std::to_string( curLevel ) + ".txt" );
 }

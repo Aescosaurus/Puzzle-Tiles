@@ -18,9 +18,10 @@ void Player::Update( UpdateInfo& info )
 
 	if( vel != Vei2::Zero() )
 	{
-		// TODO: Let player move on top of door.
 		if( canMove && level.GetTile( pos + vel ) !=
-			Level::TileType::Wall && CheckPos( pos + vel,info ) )
+			Level::TileType::Wall &&
+			( CheckPos( pos + vel,info ) ||
+			pos + vel == info.door.GetPos() ) )
 		{
 			if( vel.x != 0 ) pos += vel.X();
 			else pos += vel.Y();
@@ -72,7 +73,7 @@ void Player::Draw( TileMap& map ) const
 // 	return( pos );
 // }
 
-PLevelObjectArr& Player::GetArrows()
-{
-	return( arrows );
-}
+// PLevelObjectArr& Player::GetArrows()
+// {
+// 	return( arrows );
+// }

@@ -18,6 +18,7 @@ public:
 	void Draw();
 private:
 	void Load( const std::string& levelName );
+	std::string GenerateLevelName() const;
 private:
 	const Keyboard& kbd;
 	TileMap& tilemap;
@@ -27,8 +28,6 @@ private:
 	LevelObject::UpdateInfo updateInfo;
 	std::vector<PLevelObjectArr> levelObjects;
 	Player guy;
-	// PLevelObjectArr arrows;
-	// PLevelObjectArr lanterns;
-	// PLevelObjectArr basicGates;
 	Door door;
+	int curLevel = 0;
 };

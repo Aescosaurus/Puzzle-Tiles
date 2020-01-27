@@ -24,7 +24,7 @@ public:
 	// void SetPos( const Vei2& pos );
 
 	// const Vei2& GetPos() const;
-	PLevelObjectArr& GetArrows();
+	// PLevelObjectArr& GetArrows();
 private:
 	static constexpr float speed = 12.0f;
 	const Level& level;
