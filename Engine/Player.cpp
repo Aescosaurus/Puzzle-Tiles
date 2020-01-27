@@ -67,12 +67,14 @@ bool Player::CanMove( const Vei2& loc,UpdateInfo& info ) const
 	for( auto& lantern : info.levelObjects[int( Type::Lantern )] )
 	{
 		if( ( loc - lantern->GetPos() ).GetLengthSq() <=
-			Lantern::lightRadius * Lantern::lightRadius )
+			Lantern::lightRadius * Lantern::lightRadius &&
+			lantern->IsLit() )
 		{
 			overlapsLight = true;
 			break;
 		}
 	}
+
 	return( canMove &&
 		level.GetTile( loc ) != Level::TileType::Wall &&
 		( CheckPos( loc,info ) || loc == info.door.GetPos() ) &&

@@ -30,4 +30,5 @@ private:
 	Player guy;
 	Door door;
 	int curLevel = 0;
+	bool canAdvanceLevel = false;
 };

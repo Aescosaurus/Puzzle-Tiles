@@ -16,6 +16,8 @@ public:
 	void Draw( TileMap& map ) const override;
 
 	void Light( UpdateInfo& info );
+
+	bool IsLit() const override;
 public:
 	static constexpr int lightRadius = 5;
 private:

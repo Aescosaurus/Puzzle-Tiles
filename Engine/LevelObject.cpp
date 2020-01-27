@@ -63,3 +63,8 @@ bool LevelObject::IsVisible() const
 {
 	return( visible );
 }
+
+bool LevelObject::IsLit() const
+{
+	return( false );
+}

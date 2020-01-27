@@ -55,3 +55,8 @@ void Lantern::Light( UpdateInfo& info )
 		}
 	}
 }
+
+bool Lantern::IsLit() const
+{
+	return( lit );
+}

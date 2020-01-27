@@ -16,6 +16,22 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 
 void Gameplay::Update()
 {
+	if( kbd.KeyIsPressed( VK_RETURN ) )
+	{
+		if( canAdvanceLevel )
+		{
+			Load( GenerateLevelName() );
+			canAdvanceLevel = false;
+		}
+	}
+	else canAdvanceLevel = true;
+
+	if( kbd.KeyIsPressed( 'R' ) )
+	{
+		--curLevel;
+		Load( GenerateLevelName() );
+	}
+
 	const auto dt = ft.Mark();
 	updateInfo.dt = dt;
 
@@ -34,7 +50,8 @@ void Gameplay::Update()
 		Load( GenerateLevelName() );
 	}
 
-	// TODO: Some test levels.
+	// TODO: More levels.
+	// TODO: Something that shoots a bullet in every direction when hit.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )
