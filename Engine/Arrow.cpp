@@ -14,17 +14,17 @@ void Arrow::Update( UpdateInfo& info )
 		moveSpeed.Reset2();
 		pos += vel;
 
-		static constexpr auto lenSq = lightArea * lightArea;
-		for( auto& vec : info.levelObjects )
-		{
-			for( auto& item : vec )
-			{
-				if( ( item->GetPos() - pos ).GetLengthSq() <= lenSq )
-				{
-					item->SetVisible();
-				}
-			}
-		}
+		// static constexpr auto lenSq = lightArea * lightArea;
+		// for( auto& vec : info.levelObjects )
+		// {
+		// 	for( auto& item : vec )
+		// 	{
+		// 		if( ( item->GetPos() - pos ).GetLengthSq() <= lenSq )
+		// 		{
+		// 			item->SetVisible();
+		// 		}
+		// 	}
+		// }
 	}
 
 	if( !Graphics::ScreenRect.GetExpanded( lightArea )
@@ -42,5 +42,5 @@ void Arrow::Draw( TileMap& tilemap ) const
 	// tilemap.DrawLightCircle( pos.x,pos.y,2,
 	// 	Colors::MakeRGB( 200,200,140 ),0.5f );
 	// tilemap.DrawLightCircle( pos.x,pos.y,2,cs );
-	colMap.Draw( pos,tilemap );
+	// colMap.Draw( pos,tilemap );
 }
