@@ -11,13 +11,7 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 	guy( Vei2{ 0,0 },level,levelObjects[int( LevelObject::Type::Arrow )] ),
 	door( Vei2{ 0,0 } )
 {
-
 	Load( "Levels/_TestLevel.txt" );
-	// enemies.emplace_back( Enemy{ Vei2{ 5,5 } } );
-	// for( int i = 0; i < 4; ++i )
-	// {
-	// 	lanterns.emplace_back( Lantern{ level.GetValidSpot() } );
-	// }
 }
 
 void Gameplay::Update()
@@ -27,20 +21,6 @@ void Gameplay::Update()
 
 	guy.Update( updateInfo );
 
-	// for( auto& arrow : arrows )
-	// {
-	// 	arrow->Update( updateInfo );
-	// }
-	// 
-	// for( auto& lantern : lanterns )
-	// {
-	// 	lantern->Update( updateInfo );
-	// }
-	// 
-	// for( auto& gate : basicGates )
-	// {
-	// 	gate->Update( updateInfo );
-	// }
 	for( auto& vec : levelObjects )
 	{
 		for( auto& levelObject : vec )
@@ -50,12 +30,9 @@ void Gameplay::Update()
 	}
 
 	// TODO: Exit loads next level.
-	// TODO: Different color gates.
 	// TODO: Some test levels.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
-	// chili::remove_erase_if( arrows,isDestroyed );
-	// chili::remove_erase_if( lanterns,isDestroyed );
 	for( auto& vec : levelObjects )
 	{
 		chili::remove_erase_if( vec,isDestroyed );
@@ -66,16 +43,6 @@ void Gameplay::Draw()
 {
 	level.Draw( tilemap );
 	guy.Draw( tilemap );
-
-	// for( const auto& lantern : lanterns )
-	// {
-	// 	lantern->Draw( tilemap );
-	// }
-	// 
-	// for( const auto& gate : basicGates )
-	// {
-	// 	gate->Draw( tilemap );
-	// }
 	
 	for( auto& vec : levelObjects )
 	{
@@ -116,7 +83,6 @@ void Gameplay::Load( const std::string& levelName )
 			floorVal = 1;
 			break;
 		case 'l':
-			// lanterns.emplace_back( std::make_unique<Lantern>( pos ) );
 			levelObjects[int( LevelObject::Type::Lantern )].emplace_back(
 				std::make_unique<Lantern>( pos ) );
 			floorVal = 1;
