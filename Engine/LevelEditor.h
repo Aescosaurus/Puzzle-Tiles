@@ -3,6 +3,8 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "TileMap.h"
+#include "ColorMap.h"
+#include "Lantern.h"
 
 class LevelEditor
 {
@@ -23,4 +25,6 @@ private:
 	std::vector<char> tiles;
 	Vei2 mousePos = Vei2::Zero();
 	char selectedTile = '1';
+	static constexpr ColorStyle lanStyle = { Colors::Yellow,0 };
+	ColorMap colMap = ColorMap::CreateCircle( Lantern::lightRadius,lanStyle,0.2f );
 };

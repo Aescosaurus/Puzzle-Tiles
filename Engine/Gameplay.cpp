@@ -52,6 +52,7 @@ void Gameplay::Update()
 
 	// TODO: More levels.
 	// TODO: Something that shoots a bullet in every direction when hit.
+	// TODO: Background tiles occasionally change color.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )

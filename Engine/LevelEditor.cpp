@@ -66,6 +66,10 @@ void LevelEditor::Draw( TileMap& tilemap ) const
 		for( int x = 0; x < size; ++x )
 		{
 			tilemap.PutPixel( x,y,Tile2Color( tiles[y * size + x] ) );
+			if( tiles[y * size + x] == 'l' )
+			{
+				colMap.Draw( Vei2{ x,y },tilemap );
+			}
 		}
 	}
 
