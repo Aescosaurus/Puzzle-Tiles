@@ -13,9 +13,9 @@ void Player::Update( UpdateInfo& info )
 {
 	auto vel = Vei2::Zero();
 	if( info.kbd.KeyIsPressed( 'W' ) ) --vel.y;
-	if( info.kbd.KeyIsPressed( 'S' ) ) ++vel.y;
-	if( info.kbd.KeyIsPressed( 'A' ) ) --vel.x;
-	if( info.kbd.KeyIsPressed( 'D' ) ) ++vel.x;
+	else if( info.kbd.KeyIsPressed( 'S' ) ) ++vel.y;
+	else if( info.kbd.KeyIsPressed( 'A' ) ) --vel.x;
+	else if( info.kbd.KeyIsPressed( 'D' ) ) ++vel.x;
 
 	if( vel != Vei2::Zero() )
 	{
