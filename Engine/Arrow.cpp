@@ -5,7 +5,9 @@ Arrow::Arrow( const Vei2& pos,const Vei2& vel )
 	LevelObject( pos,cs.Generate(),true ),
 	vel( vel ),
 	colMap( ColorMap::CreateCircle( lightArea,cs,0.1f ) )
-{}
+{
+	assert( vel.x == 0 || vel.y == 0 );
+}
 
 void Arrow::Update( UpdateInfo& info )
 {

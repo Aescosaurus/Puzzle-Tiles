@@ -33,9 +33,9 @@ void Player::Update( UpdateInfo& info )
 
 	Vei2 shotVel = Vei2::Zero();
 	if( info.kbd.KeyIsPressed( VK_UP ) ) --shotVel.y;
-	if( info.kbd.KeyIsPressed( VK_DOWN ) ) ++shotVel.y;
-	if( info.kbd.KeyIsPressed( VK_LEFT ) ) --shotVel.x;
-	if( info.kbd.KeyIsPressed( VK_RIGHT ) ) ++shotVel.x;
+	else if( info.kbd.KeyIsPressed( VK_DOWN ) ) ++shotVel.y;
+	else if( info.kbd.KeyIsPressed( VK_LEFT ) ) --shotVel.x;
+	else if( info.kbd.KeyIsPressed( VK_RIGHT ) ) ++shotVel.x;
 	if( refire.Update( info.dt ) && shotVel != Vei2::Zero() )
 	{
 		refire.Reset();

@@ -51,7 +51,6 @@ void Gameplay::Update()
 		Load( GenerateLevelName() );
 	}
 
-	// TODO: Disable diagonal arrow shooting.
 	// TODO: More levels.
 	// TODO: Something that shoots a bullet in every direction when hit.
 
