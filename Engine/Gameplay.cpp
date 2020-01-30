@@ -36,6 +36,7 @@ void Gameplay::Update()
 	updateInfo.dt = dt;
 
 	guy.Update( updateInfo );
+	level.Update( dt );
 
 	for( auto& vec : levelObjects )
 	{
@@ -50,9 +51,9 @@ void Gameplay::Update()
 		Load( GenerateLevelName() );
 	}
 
+	// TODO: Disable diagonal arrow shooting.
 	// TODO: More levels.
 	// TODO: Something that shoots a bullet in every direction when hit.
-	// TODO: Background tiles occasionally change color.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )

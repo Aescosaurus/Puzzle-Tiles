@@ -61,6 +61,16 @@ Level::Level()
 	// }
 }
 
+void Level::Update( float dt )
+{
+	if( tileChange.Update( dt ) )
+	{
+		tileChange.Reset();
+		auto& theTile = tiles[int( Random{ 0,int( tiles.size() ) - 1 } )];
+		if( theTile.type != TileType::Floor ) theTile.RandomizeColor();
+	}
+}
+
 void Level::Draw( TileMap& map ) const
 {
 	for( int y = 0; y < size; ++y )

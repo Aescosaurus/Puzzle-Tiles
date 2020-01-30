@@ -4,6 +4,7 @@
 #include "TileMap.h"
 #include "Vec2.h"
 #include "Rect.h"
+#include "Timer.h"
 
 class Level
 {
@@ -25,6 +26,7 @@ private:
 public:
 	Level();
 
+	void Update( float dt );
 	void Draw( TileMap& map ) const;
 
 	void Load( const std::vector<int>& tiles );
@@ -38,4 +40,5 @@ private:
 	static constexpr int size = TileMap::size;
 	std::vector<Tile> tiles;
 	// static constexpr int deviation = 20;
+	Timer tileChange = 0.5f;
 };
