@@ -61,11 +61,10 @@ void TileMap::PutLight( int x,int y,Color c,float val )
 		y >= 0 && y < size &&
 		val > 0.0f )
 	{
+		assert( val <= 1.0f );
 		auto& item = lightMap[y * size + x];
 		item.first = Colors::Interpolate( item.first,c,0.5f );
-		item.second = ( item.second + val ) / 2;
-		// item.first = c;
-		// item.second = val;
+		item.second = ( item.second + val ) / 2.0f;
 	}
 }
 

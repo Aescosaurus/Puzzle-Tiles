@@ -43,7 +43,7 @@ ColorMap ColorMap::CreateCircle( int radius,const ColorStyle& cs,
 			}
 			// temp.lights[y * temp.width + x] = light;
 			// temp.colors[y * temp.width + x] = cs.Generate();
-			temp.lights.emplace_back( light );
+			temp.lights.emplace_back( std::min( 1.0f,light ) );
 			temp.colors.emplace_back( cs.Generate() );
 		}
 	}
