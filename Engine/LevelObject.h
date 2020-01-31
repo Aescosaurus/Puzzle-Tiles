@@ -16,6 +16,7 @@ public:
 		Arrow = 0,
 		Lantern,
 		BasicGate,
+		Replicator,
 		Max
 	};
 public:

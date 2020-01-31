@@ -52,7 +52,8 @@ void Gameplay::Update()
 	}
 
 	// TODO: More levels.
-	// TODO: Something that shoots a bullet in every direction when hit.
+	// TODO: Some tiles are flashing to indicate some piece of info.
+	// TODO: Glowy/flashing animation for when walls are destroyed.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )
@@ -132,6 +133,11 @@ void Gameplay::Load( const std::string& levelName )
 		case 'u':
 			levelObjects[int( LevelObject::Type::BasicGate )].emplace_back(
 				std::make_unique<BasicGate>( pos,BasicGate::GateType::Purple ) );
+			floorVal = 1;
+			break;
+		case 'e':
+			levelObjects[int( LevelObject::Type::Replicator )].emplace_back(
+				std::make_unique<Replicator>( pos ) );
 			floorVal = 1;
 			break;
 		case '\n':

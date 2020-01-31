@@ -8,6 +8,7 @@
 #include "Lantern.h"
 #include "Door.h"
 #include "BasicGate.h"
+#include "Replicator.h"
 
 class Gameplay
 {
