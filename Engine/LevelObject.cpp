@@ -9,7 +9,7 @@ LevelObject::LevelObject( const Vei2& pos,Color col,bool visible )
 
 void LevelObject::Draw( TileMap& map ) const
 {
-	if( visible )
+	// if( visible )
 	{
 		map.PutPixel( pos.x,pos.y,col );
 	}

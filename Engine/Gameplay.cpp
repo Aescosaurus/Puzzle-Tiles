@@ -54,6 +54,7 @@ void Gameplay::Update()
 	// TODO: More levels.
 	// TODO: Some tiles are flashing to indicate some piece of info.
 	// TODO: Glowy/flashing animation for when walls are destroyed.
+	// TODO: Level editor opens test level by default.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )
