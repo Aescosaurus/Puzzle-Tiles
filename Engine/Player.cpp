@@ -36,12 +36,18 @@ void Player::Update( UpdateInfo& info )
 	else if( info.kbd.KeyIsPressed( VK_DOWN ) ) ++shotVel.y;
 	else if( info.kbd.KeyIsPressed( VK_LEFT ) ) --shotVel.x;
 	else if( info.kbd.KeyIsPressed( VK_RIGHT ) ) ++shotVel.x;
-	if( refire.Update( info.dt ) && shotVel != Vei2::Zero() )
+	if( shotVel != Vei2::Zero() )
 	{
-		refire.Reset();
-		// arrows.emplace_back( Arrow{ pos,shotVel } );
-		arrows.emplace_back( std::make_unique<Arrow>(
-			pos,shotVel ) );
+		if( canShoot )
+		{
+			arrows.emplace_back( std::make_unique<Arrow>(
+				pos,shotVel ) );
+			canShoot = false;
+		}
+	}
+	else
+	{
+		canShoot = true;
 	}
 
 	// for( auto& arrow : arrows )

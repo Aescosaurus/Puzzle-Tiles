@@ -33,6 +33,7 @@ private:
 	const Level& level;
 	// Vei2 pos;
 	PLevelObjectArr& arrows;
-	Timer refire = 0.45f;
+	// Timer refire = 0.45f;
 	bool canMove = false;
+	bool canShoot = false;
 };
