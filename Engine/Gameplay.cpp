@@ -11,6 +11,17 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 	guy( Vei2{ 0,0 },level,levelObjects[int( LevelObject::Type::Arrow )] ),
 	door( Vei2{ 0,0 } )
 {
+	// Skips to latest level.
+	while( true )
+	{
+		++curLevel;
+		std::ifstream in{ GenerateLevelName() };
+		if( !in.good() )
+		{
+			--curLevel;
+			break;
+		}
+	}
 	Load( GenerateLevelName() );
 }
 
