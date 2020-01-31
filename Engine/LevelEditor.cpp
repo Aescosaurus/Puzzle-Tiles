@@ -106,7 +106,7 @@ Color LevelEditor::Tile2Color( char tile ) const
 	case 'u':
 		return( Colors::Purple );
 	case 'e':
-		return( Colors::MakeRGB( 0,200,255 ) );
+		return( Colors::MakeRGB( 90,170,240 ) );
 	}
 	assert( false );
 	return( Colors::Magenta );
