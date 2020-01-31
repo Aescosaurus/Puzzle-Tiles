@@ -11,6 +11,7 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 	guy( Vei2{ 0,0 },level,levelObjects[int( LevelObject::Type::Arrow )] ),
 	door( Vei2{ 0,0 } )
 {
+#if !NDEBUG
 	// Skips to latest level.
 	while( true )
 	{
@@ -22,6 +23,7 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 			break;
 		}
 	}
+#endif
 	Load( GenerateLevelName() );
 }
 
