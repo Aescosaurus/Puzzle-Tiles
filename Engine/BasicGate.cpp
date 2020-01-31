@@ -7,6 +7,7 @@ BasicGate::BasicGate( const Vei2& pos,GateType type )
 
 void BasicGate::Update( UpdateInfo& info )
 {
+	// TODO: Check gate type or remove them entirely.
 	for( auto& arrow : info.levelObjects[int( Type::Arrow )] )
 	{
 		if( arrow->GetPos() == pos )
@@ -27,7 +28,11 @@ void BasicGate::Update( UpdateInfo& info )
 			}
 			if( isTrigger )
 			{
-				info.levelObjects[int( Type::BasicGate )].clear();
+				// info.levelObjects[int( Type::BasicGate )].clear();
+				for( auto& gate : info.levelObjects[int( Type::BasicGate )] )
+				{
+					gate->Destroy();
+				}
 			}
 		}
 	}

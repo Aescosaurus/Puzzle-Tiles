@@ -18,7 +18,7 @@ void Replicator::Update( UpdateInfo& info )
 			{
 				arrowArr.emplace_back( std::make_unique<Arrow>(
 					pos,dirs[i] ) );
-				arrowArr.back()->Update( info );
+				arrowArr.back()->SetPos( arrowArr.back()->GetPos() + dirs[i] );
 			}
 			break;
 		}
