@@ -68,6 +68,8 @@ void Gameplay::Update()
 	// TODO: Some tiles are flashing to indicate some piece of info.
 	// TODO: Glowy/flashing animation for when walls are destroyed.
 	// TODO: Level editor opens test level by default.
+	// TODO: Teleporter object that tps player/arrows?
+	// TODO: Object that shoots automatically?
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )
