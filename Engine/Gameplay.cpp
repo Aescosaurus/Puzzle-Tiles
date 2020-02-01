@@ -69,7 +69,6 @@ void Gameplay::Update()
 	// TODO: Glowy/flashing animation for when walls are destroyed.
 	// TODO: Level editor opens test level by default.
 	// TODO: Teleporter object that tps player/arrows?
-	// TODO: Object that shoots automatically?
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )
@@ -138,19 +137,19 @@ void Gameplay::Load( const std::string& levelName )
 			break;
 		case 'r':
 			levelObjects[int( LevelObject::Type::BasicGate )].emplace_back(
-				std::make_unique<BasicGate>( pos,BasicGate::GateType::Red ) );
+				std::make_unique<BasicGate>( pos ) );
 			floorVal = 1;
 			break;
-		case 'i':
-			levelObjects[int( LevelObject::Type::BasicGate )].emplace_back(
-				std::make_unique<BasicGate>( pos,BasicGate::GateType::Pink ) );
-			floorVal = 1;
-			break;
-		case 'u':
-			levelObjects[int( LevelObject::Type::BasicGate )].emplace_back(
-				std::make_unique<BasicGate>( pos,BasicGate::GateType::Purple ) );
-			floorVal = 1;
-			break;
+		// case 'i':
+		// 	levelObjects[int( LevelObject::Type::BasicGate )].emplace_back(
+		// 		std::make_unique<BasicGate>( pos ) );
+		// 	floorVal = 1;
+		// 	break;
+		// case 'u':
+		// 	levelObjects[int( LevelObject::Type::BasicGate )].emplace_back(
+		// 		std::make_unique<BasicGate>( pos ) );
+		// 	floorVal = 1;
+		// 	break;
 		case 'e':
 			levelObjects[int( LevelObject::Type::Replicator )].emplace_back(
 				std::make_unique<Replicator>( pos ) );

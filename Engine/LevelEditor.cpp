@@ -7,7 +7,7 @@ LevelEditor::LevelEditor( const Keyboard& kbd,const Mouse& mouse )
 	:
 	kbd( kbd ),
 	mouse( mouse ),
-	items( { '0','1','p','d','l','r','i','u','e' } )
+	items( { '0','1','p','d','l','r',/*'i','u',*/'e' } )
 {
 	tiles.reserve( size * size );
 	for( int i = 0; i < size * size; ++i )

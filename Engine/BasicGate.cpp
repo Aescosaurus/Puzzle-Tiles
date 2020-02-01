@@ -1,13 +1,13 @@
 #include "BasicGate.h"
 
-BasicGate::BasicGate( const Vei2& pos,GateType type )
+BasicGate::BasicGate( const Vei2& pos )
 	:
-	LevelObject( pos,styles[int( type )].Generate() )
+	LevelObject( pos,styles[0].Generate() ),
+	type( type )
 {}
 
 void BasicGate::Update( UpdateInfo& info )
 {
-	// TODO: Check gate type or remove them entirely.
 	for( auto& arrow : info.levelObjects[int( Type::Arrow )] )
 	{
 		if( arrow->GetPos() == pos )

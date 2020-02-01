@@ -10,14 +10,7 @@ class BasicGate
 	public LevelObject
 {
 public:
-	enum class GateType
-	{
-		Red,
-		Pink,
-		Purple
-	};
-public:
-	BasicGate( const Vei2& pos,GateType type  );
+	BasicGate( const Vei2& pos );
 
 	void Update( UpdateInfo& info ) override;
 private:
