@@ -15,11 +15,12 @@ void Turret::Update( UpdateInfo& info )
 		{
 			arrow->Destroy();
 			arrowArr.emplace_back( std::make_unique<Arrow>(
-				pos,dir ) );
+				pos + dir,dir ) );
 
 			// Rotate direction right.
 			dir.y *= -1;
 			std::swap( dir.x,dir.y );
+			break;
 		}
 	}
 }

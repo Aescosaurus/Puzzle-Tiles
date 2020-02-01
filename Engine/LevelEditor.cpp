@@ -7,7 +7,7 @@ LevelEditor::LevelEditor( const Keyboard& kbd,const Mouse& mouse )
 	:
 	kbd( kbd ),
 	mouse( mouse ),
-	items( { '0','1','p','d','l','b','r','s' } )
+	items( { '0','1','p','d','l','b','r','s','t' } )
 {
 	tiles.reserve( size * size );
 	std::ifstream in{ "Levels/_TestLevel.txt" };
@@ -116,6 +116,8 @@ Color LevelEditor::Tile2Color( char tile ) const
 		return( Colors::MakeRGB( 90,170,240 ) );
 	case 's':
 		return( Colors::MakeRGB( 255,87,243 ) );
+	case 't':
+		return( Colors::MakeRGB( 210,180,90 ) );
 	}
 	assert( false );
 	return( Colors::Magenta );

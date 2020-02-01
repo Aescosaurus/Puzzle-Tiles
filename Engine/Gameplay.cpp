@@ -76,8 +76,6 @@ void Gameplay::Update()
 	}
 
 	// TODO: More levels.
-	// TODO: Some tiles are flashing to indicate some piece of info.
-	// TODO: Glowy/flashing animation for when walls are destroyed.
 	// TODO: All LevelObjects flash white when arrow hits them.
 	// TODO: Teleporter object that tps player/arrows?
 	// TODO: Player can loop across sides and top of screen.
@@ -158,19 +156,14 @@ void Gameplay::Load( const std::string& levelName )
 				std::make_unique<StepGate>( pos ) );
 			floorVal = 1;
 			break;
-		// case 'i':
-		// 	levelObjects[int( LevelObject::Type::BasicGate )].emplace_back(
-		// 		std::make_unique<BasicGate>( pos ) );
-		// 	floorVal = 1;
-		// 	break;
-		// case 'u':
-		// 	levelObjects[int( LevelObject::Type::BasicGate )].emplace_back(
-		// 		std::make_unique<BasicGate>( pos ) );
-		// 	floorVal = 1;
-		// 	break;
 		case 'r':
 			levelObjects[int( LevelObject::Type::Replicator )].emplace_back(
 				std::make_unique<Replicator>( pos ) );
+			floorVal = 1;
+			break;
+		case 't':
+			levelObjects[int( LevelObject::Type::Turret )].emplace_back(
+				std::make_unique<Turret>( pos ) );
 			floorVal = 1;
 			break;
 		case '\n':

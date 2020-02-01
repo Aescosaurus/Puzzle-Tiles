@@ -13,6 +13,6 @@ public:
 
 	void Update( UpdateInfo& info ) override;
 private:
-	static constexpr ColorStyle style = { Colors::MakeRGB( 230,230,20 ),20 };
+	static constexpr ColorStyle style = { Colors::MakeRGB( 230,180,70 ),20 };
 	Vei2 dir = Vei2::Up();
 };

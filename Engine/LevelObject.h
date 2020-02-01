@@ -18,6 +18,7 @@ public:
 		BasicGate,
 		Replicator,
 		StepGate,
+		Turret,
 		Max
 	};
 public:

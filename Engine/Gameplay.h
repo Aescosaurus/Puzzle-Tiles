@@ -10,6 +10,7 @@
 #include "BasicGate.h"
 #include "Replicator.h"
 #include "StepGate.h"
+#include "Turret.h"
 
 class Gameplay
 {
