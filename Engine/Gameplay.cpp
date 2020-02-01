@@ -13,16 +13,16 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 {
 #if !NDEBUG
 	// Skips to latest level.
-	while( true )
-	{
-		++curLevel;
-		std::ifstream in{ GenerateLevelName() };
-		if( !in.good() )
-		{
-			--curLevel;
-			break;
-		}
-	}
+	// while( true )
+	// {
+	// 	++curLevel;
+	// 	std::ifstream in{ GenerateLevelName() };
+	// 	if( !in.good() )
+	// 	{
+	// 		--curLevel;
+	// 		break;
+	// 	}
+	// }
 #endif
 	Load( GenerateLevelName() );
 }
@@ -167,7 +167,7 @@ void Gameplay::Load( const std::string& levelName )
 		// 		std::make_unique<BasicGate>( pos ) );
 		// 	floorVal = 1;
 		// 	break;
-		case 'e':
+		case 'r':
 			levelObjects[int( LevelObject::Type::Replicator )].emplace_back(
 				std::make_unique<Replicator>( pos ) );
 			floorVal = 1;
