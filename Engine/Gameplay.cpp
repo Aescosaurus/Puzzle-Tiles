@@ -51,11 +51,22 @@ void Gameplay::Update()
 	guy.Update( updateInfo );
 	level.Update( dt );
 
-	for( auto& vec : levelObjects )
+	for( int i = 0; i < int( levelObjects.size() ); ++i )
 	{
+		auto& vec = levelObjects[i];
 		for( auto& levelObject : vec )
 		{
 			levelObject->Update( updateInfo );
+			if( i != int( LevelObject::Type::Arrow ) )
+			{
+				for( auto& arrow : levelObjects[int( LevelObject::Type::Arrow )] )
+				{
+					if( arrow->GetPos() == levelObject->GetPos() )
+					{
+						arrow->Destroy();
+					}
+				}
+			}
 		}
 	}
 
@@ -69,6 +80,7 @@ void Gameplay::Update()
 	// TODO: Glowy/flashing animation for when walls are destroyed.
 	// TODO: Level editor opens test level by default.
 	// TODO: Teleporter object that tps player/arrows?
+	// TODO: Player can loop across sides and top of screen.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )
