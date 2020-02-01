@@ -16,17 +16,19 @@ void Arrow::Update( UpdateInfo& info )
 		moveSpeed.Reset2();
 		pos += vel;
 
-		// static constexpr auto lenSq = lightArea * lightArea;
-		// for( auto& vec : info.levelObjects )
-		// {
-		// 	for( auto& item : vec )
-		// 	{
-		// 		if( ( item->GetPos() - pos ).GetLengthSq() <= lenSq )
-		// 		{
-		// 			item->SetVisible();
-		// 		}
-		// 	}
-		// }
+		for( int i = int( Type::Arrow ) + 1;
+			i < int( info.levelObjects.size() );
+			++i )
+		{
+			auto& vec = info.levelObjects[i];
+			for( auto& obj : vec )
+			{
+				if( obj->GetPos() == pos )
+				{
+					obj->StartFlash();
+				}
+			}
+		}
 	}
 
 	if( !Graphics::ScreenRect.GetExpanded( lightArea )

@@ -4,6 +4,7 @@
 #include "TileMap.h"
 #include <memory>
 #include "Keyboard.h"
+#include "Timer.h"
 
 class LevelObject;
 typedef std::vector<std::unique_ptr<LevelObject>> PLevelObjectArr;
@@ -38,12 +39,14 @@ public:
 public:
 	LevelObject( const Vei2& pos,Color col,bool visible = false );
 
+	void BaseUpdate( UpdateInfo& info );
 	virtual void Update( UpdateInfo& info ) {}
 	virtual void Draw( TileMap& map ) const;
 
 	void Destroy();
 	void SetPos( const Vei2& pos );
 	void SetVisible();
+	void StartFlash();
 
 	const Vei2& GetPos() const;
 	bool IsDestroyed() const;
@@ -57,4 +60,5 @@ protected:
 	bool visible = false;
 private:
 	bool destroyed = false;
+	Timer flashDuration = 0.4f;
 };

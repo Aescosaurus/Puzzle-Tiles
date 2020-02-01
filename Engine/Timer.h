@@ -28,6 +28,10 @@ public:
 	{
 		return( curTime >= maxTime );
 	}
+	float GetPercent() const
+	{
+		return( std::min( 1.0f,curTime / maxTime ) );
+	}
 private:
 	float maxTime;
 	float curTime = 0.0f;

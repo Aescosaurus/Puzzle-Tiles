@@ -56,7 +56,7 @@ void Gameplay::Update()
 		auto& vec = levelObjects[i];
 		for( auto& levelObject : vec )
 		{
-			levelObject->Update( updateInfo );
+			levelObject->BaseUpdate( updateInfo );
 			if( i != int( LevelObject::Type::Arrow ) )
 			{
 				for( auto& arrow : levelObjects[int( LevelObject::Type::Arrow )] )

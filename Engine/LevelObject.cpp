@@ -5,13 +5,23 @@ LevelObject::LevelObject( const Vei2& pos,Color col,bool visible )
 	pos( pos ),
 	col( col ),
 	visible( visible )
-{}
+{
+	flashDuration.Update( 9999.0f );
+}
+
+void LevelObject::BaseUpdate( UpdateInfo& info )
+{
+	Update( info );
+
+	flashDuration.Update( info.dt );
+}
 
 void LevelObject::Draw( TileMap& map ) const
 {
 	// if( visible )
 	{
-		map.PutPixel( pos.x,pos.y,col );
+		map.PutPixel( pos.x,pos.y,Colors::Interpolate(
+			Colors::White,col,flashDuration.GetPercent() ) );
 	}
 }
 
@@ -28,6 +38,11 @@ void LevelObject::SetPos( const Vei2& pos )
 void LevelObject::SetVisible()
 {
 	visible = true;
+}
+
+void LevelObject::StartFlash()
+{
+	flashDuration.Reset();
 }
 
 const Vei2& LevelObject::GetPos() const
