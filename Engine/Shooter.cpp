@@ -1,18 +1,25 @@
 #include "Shooter.h"
 #include "Arrow.h"
 
-Shooter::Shooter( const Vei2& pos,const Vei2& dir )
+Shooter::Shooter( const Vei2& pos )
 	:
-	LevelObject( pos,style.Generate() ),
-	dir( dir )
+	LevelObject( pos,style.Generate() )
 {}
 
 void Shooter::Update( UpdateInfo& info )
 {
-	if( refire.Update( info.dt ) )
+	auto& arrowArr = info.levelObjects[int( Type::Arrow )];
+	for( auto& arrow : arrowArr )
 	{
-		refire.Reset();
-		info.levelObjects[int( Type::Arrow )].emplace_back(
-			std::make_unique<Arrow>( pos,dir ) );
+		if( arrow->GetPos() == pos )
+		{
+			arrow->Destroy();
+			arrowArr.emplace_back( std::make_unique<Arrow>(
+				pos,dir ) );
+
+			// Rotate direction right.
+			dir.y *= -1;
+			std::swap( dir.x,dir.y );
+		}
 	}
 }
