@@ -81,6 +81,7 @@ void Gameplay::Update()
 	// TODO: Level editor opens test level by default.
 	// TODO: Teleporter object that tps player/arrows?
 	// TODO: Player can loop across sides and top of screen.
+	// TODO: Enemies that move back and forth when the player moves?
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )
