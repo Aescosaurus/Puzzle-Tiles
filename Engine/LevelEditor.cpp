@@ -10,9 +10,20 @@ LevelEditor::LevelEditor( const Keyboard& kbd,const Mouse& mouse )
 	items( { '0','1','p','d','l','b',/*'i','u',*/'e','s' } )
 {
 	tiles.reserve( size * size );
-	for( int i = 0; i < size * size; ++i )
+	std::ifstream in{ "Levels/_TestLevel.txt" };
+	if( in.good() )
 	{
-		tiles.emplace_back( '0' );
+		for( char c = in.get(); in.good(); c = in.get() )
+		{
+			if( c != '\n' ) tiles.emplace_back( c );
+		}
+	}
+	else
+	{
+		for( int i = 0; i < size * size; ++i )
+		{
+			tiles.emplace_back( '0' );
+		}
 	}
 }
 

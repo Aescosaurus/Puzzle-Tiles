@@ -78,7 +78,6 @@ void Gameplay::Update()
 	// TODO: More levels.
 	// TODO: Some tiles are flashing to indicate some piece of info.
 	// TODO: Glowy/flashing animation for when walls are destroyed.
-	// TODO: Level editor opens test level by default.
 	// TODO: Teleporter object that tps player/arrows?
 	// TODO: Player can loop across sides and top of screen.
 	// TODO: Enemies that move back and forth when the player moves?
