@@ -114,10 +114,10 @@
     <ClInclude Include="Replicator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shooter.h">
+    <ClInclude Include="StepGate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StepGate.h">
+    <ClInclude Include="Turret.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -188,10 +188,10 @@
     <ClCompile Include="Replicator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shooter.cpp">
+    <ClCompile Include="StepGate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StepGate.cpp">
+    <ClCompile Include="Turret.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

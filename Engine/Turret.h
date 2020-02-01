@@ -3,13 +3,13 @@
 #include "LevelObject.h"
 #include "Timer.h"
 
-// Shoots up but shoots to the right each time you hit it.
-class Shooter
+// Shoots up but rotates right each time you hit it.
+class Turret
 	:
 	public LevelObject
 {
 public:
-	Shooter( const Vei2& pos );
+	Turret( const Vei2& pos );
 
 	void Update( UpdateInfo& info ) override;
 private:

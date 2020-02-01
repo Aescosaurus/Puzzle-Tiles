@@ -1,12 +1,12 @@
-#include "Shooter.h"
+#include "Turret.h"
 #include "Arrow.h"
 
-Shooter::Shooter( const Vei2& pos )
+Turret::Turret( const Vei2& pos )
 	:
 	LevelObject( pos,style.Generate() )
 {}
 
-void Shooter::Update( UpdateInfo& info )
+void Turret::Update( UpdateInfo& info )
 {
 	auto& arrowArr = info.levelObjects[int( Type::Arrow )];
 	for( auto& arrow : arrowArr )

@@ -13,16 +13,16 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 {
 #if !NDEBUG
 	// Skips to latest level.
-	// while( true )
-	// {
-	// 	++curLevel;
-	// 	std::ifstream in{ GenerateLevelName() };
-	// 	if( !in.good() )
-	// 	{
-	// 		--curLevel;
-	// 		break;
-	// 	}
-	// }
+	while( true )
+	{
+		++curLevel;
+		std::ifstream in{ GenerateLevelName() };
+		if( !in.good() )
+		{
+			--curLevel;
+			break;
+		}
+	}
 #endif
 	Load( GenerateLevelName() );
 }
@@ -78,6 +78,7 @@ void Gameplay::Update()
 	// TODO: More levels.
 	// TODO: Some tiles are flashing to indicate some piece of info.
 	// TODO: Glowy/flashing animation for when walls are destroyed.
+	// TODO: All LevelObjects flash white when arrow hits them.
 	// TODO: Teleporter object that tps player/arrows?
 	// TODO: Player can loop across sides and top of screen.
 	// TODO: Enemies that move back and forth when the player moves?

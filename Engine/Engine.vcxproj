@@ -163,7 +163,7 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Replicator.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="Shooter.h" />
+    <ClInclude Include="Turret.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SoundEffect.h" />
     <ClInclude Include="StepGate.h" />
@@ -192,7 +192,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Replicator.cpp" />
-    <ClCompile Include="Shooter.cpp" />
+    <ClCompile Include="Turret.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="StepGate.cpp" />
     <ClCompile Include="TileMap.cpp" />
