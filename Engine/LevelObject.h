@@ -17,6 +17,7 @@ public:
 		Lantern,
 		BasicGate,
 		Replicator,
+		StepGate,
 		Max
 	};
 public:

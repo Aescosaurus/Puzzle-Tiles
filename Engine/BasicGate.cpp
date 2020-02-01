@@ -2,8 +2,7 @@
 
 BasicGate::BasicGate( const Vei2& pos )
 	:
-	LevelObject( pos,styles[0].Generate() ),
-	type( type )
+	LevelObject( pos,styles[0].Generate() )
 {}
 
 void BasicGate::Update( UpdateInfo& info )

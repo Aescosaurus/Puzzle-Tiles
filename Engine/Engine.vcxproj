@@ -166,6 +166,7 @@
     <ClInclude Include="Shooter.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SoundEffect.h" />
+    <ClInclude Include="StepGate.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Vec2.h" />
@@ -193,6 +194,7 @@
     <ClCompile Include="Replicator.cpp" />
     <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="StepGate.cpp" />
     <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>

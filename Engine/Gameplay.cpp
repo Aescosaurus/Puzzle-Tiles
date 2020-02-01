@@ -135,9 +135,14 @@ void Gameplay::Load( const std::string& levelName )
 				std::make_unique<Lantern>( pos,true ) );
 			floorVal = 1;
 			break;
-		case 'r':
+		case 'b':
 			levelObjects[int( LevelObject::Type::BasicGate )].emplace_back(
 				std::make_unique<BasicGate>( pos ) );
+			floorVal = 1;
+			break;
+		case 's':
+			levelObjects[int( LevelObject::Type::StepGate )].emplace_back(
+				std::make_unique<StepGate>( pos ) );
 			floorVal = 1;
 			break;
 		// case 'i':

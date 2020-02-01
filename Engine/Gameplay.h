@@ -9,6 +9,7 @@
 #include "Door.h"
 #include "BasicGate.h"
 #include "Replicator.h"
+#include "StepGate.h"
 
 class Gameplay
 {
