@@ -76,10 +76,9 @@ void Gameplay::Update()
 	}
 
 	// TODO: More levels.
-	// TODO: All LevelObjects flash white when arrow hits them.
-	// TODO: Teleporter object that tps player/arrows?
-	// TODO: Player can loop across sides and top of screen.
-	// TODO: Enemies that move back and forth when the player moves?
+	// TODO: Teleporter object that tps/dupes arrows?
+	// TODO: Player can loop across sides and top/bot of screen.
+	// TODO: Enemies that move back and forth when the player moves.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )

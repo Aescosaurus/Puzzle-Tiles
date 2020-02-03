@@ -27,7 +27,11 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	gameplay( wnd.kbd,tilemap ),
 	levelEditor( wnd.kbd,wnd.mouse )
-{}
+{
+#if NDEBUG
+	gameState = State::Gameplay;
+#endif
+}
 
 void Game::Go()
 {
