@@ -15,6 +15,7 @@ public:
 	Arrow( const Vei2& pos,const Vei2& vel );
 
 	void Update( UpdateInfo& info ) override;
+	void Update2( UpdateInfo& info ) override;
 	void Draw( TileMap& tilemap ) const override;
 private:
 	static constexpr int lightArea = 2;

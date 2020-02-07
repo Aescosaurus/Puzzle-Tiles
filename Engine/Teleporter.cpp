@@ -23,7 +23,8 @@ void Teleporter::Update( UpdateInfo& info )
 					++i;
 					if( i >= int( teleporters.size() ) ) i = 0;
 					arrow->SetPos( teleporters[i]->GetPos() );
-					arrow->Update( info );
+					// Hope this will make it work.
+					arrow->Update2( info );
 					broken = true;
 					break;
 				}

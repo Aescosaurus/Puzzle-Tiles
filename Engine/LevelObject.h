@@ -42,6 +42,7 @@ public:
 
 	void BaseUpdate( UpdateInfo& info );
 	virtual void Update( UpdateInfo& info ) {}
+	virtual void Update2( UpdateInfo& info ) {}
 	virtual void Draw( TileMap& map ) const;
 
 	void Destroy();

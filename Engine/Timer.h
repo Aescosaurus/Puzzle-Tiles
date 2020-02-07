@@ -32,6 +32,10 @@ public:
 	{
 		return( std::min( 1.0f,curTime / maxTime ) );
 	}
+	float GetDuration() const
+	{
+		return( maxTime );
+	}
 private:
 	float maxTime;
 	float curTime = 0.0f;
