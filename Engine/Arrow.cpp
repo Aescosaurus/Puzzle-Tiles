@@ -7,7 +7,7 @@ Arrow::Arrow( const Vei2& pos,const Vei2& vel )
 	colMap( ColorMap::CreateCircle( lightArea,cs,0.1f ) )
 {
 	assert( vel.x == 0 || vel.y == 0 );
-	moveSpeed.Update( moveSpeed.GetDuration() );
+	// moveSpeed.Update( moveSpeed.GetDuration() );
 }
 
 void Arrow::Update( UpdateInfo& info )
