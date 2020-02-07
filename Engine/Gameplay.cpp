@@ -79,6 +79,7 @@ void Gameplay::Update()
 	// TODO: Teleporter object that tps/dupes arrows?
 	// TODO: Player can loop across sides and top/bot of screen.
 	// TODO: Enemies that move back and forth when the player moves.
+	// TODO: Something that automatically shoots arrows.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )
@@ -163,6 +164,11 @@ void Gameplay::Load( const std::string& levelName )
 		case 't':
 			levelObjects[int( LevelObject::Type::Turret )].emplace_back(
 				std::make_unique<Turret>( pos ) );
+			floorVal = 1;
+			break;
+		case 'e': // Like tEleporter.
+			levelObjects[int( LevelObject::Type::Teleporter )].emplace_back(
+				std::make_unique<Teleporter>( pos ) );
 			floorVal = 1;
 			break;
 		case '\n':

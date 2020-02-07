@@ -11,6 +11,7 @@
 #include "Replicator.h"
 #include "StepGate.h"
 #include "Turret.h"
+#include "Teleporter.h"
 
 class Gameplay
 {

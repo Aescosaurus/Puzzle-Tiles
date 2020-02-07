@@ -20,6 +20,7 @@ public:
 		Replicator,
 		StepGate,
 		Turret,
+		Teleporter,
 		Max
 	};
 public:
