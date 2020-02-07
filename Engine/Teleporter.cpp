@@ -9,6 +9,7 @@ void Teleporter::Update( UpdateInfo& info )
 {
 	for( auto& arrow : info.levelObjects[int( Type::Arrow )] )
 	{
+		bool broken = false;
 		if( arrow->GetPos() == pos )
 		{
 			auto& teleporters = info.levelObjects[int( Type::Teleporter )];
@@ -22,9 +23,12 @@ void Teleporter::Update( UpdateInfo& info )
 					++i;
 					if( i >= int( teleporters.size() ) ) i = 0;
 					arrow->SetPos( teleporters[i]->GetPos() );
+					arrow->Update( info );
+					broken = true;
 					break;
 				}
 			}
+			if( broken ) break;
 		}
 	}
 }

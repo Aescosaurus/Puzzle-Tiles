@@ -76,10 +76,10 @@ void Gameplay::Update()
 	}
 
 	// TODO: More levels.
-	// TODO: Teleporter object that tps/dupes arrows?
 	// TODO: Player can loop across sides and top/bot of screen.
 	// TODO: Enemies that move back and forth when the player moves.
 	// TODO: Something that automatically shoots arrows.
+	// TODO: Lanterns that turn off when you hit them again.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )
