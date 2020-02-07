@@ -6,7 +6,7 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 	:
 	kbd( kbd ),
 	tilemap( tilemap ),
-	updateInfo{ kbd,0.0f,guy,door,levelObjects },
+	updateInfo{ kbd,0.0f,level,guy,door,levelObjects },
 	levelObjects{ int( LevelObject::Type::Max ) },
 	guy( Vei2{ 0,0 },level,levelObjects[int( LevelObject::Type::Arrow )] ),
 	door( Vei2{ 0,0 } )
@@ -77,9 +77,10 @@ void Gameplay::Update()
 
 	// TODO: More levels.
 	// TODO: Player can loop across sides and top/bot of screen.
-	// TODO: Enemies that move back and forth when the player moves.
 	// TODO: Something that automatically shoots arrows.
 	// TODO: Lanterns that turn off when you hit them again.
+	// TODO: Above but with different light pattern.
+	// TODO: Slow fade in from black on level start.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )
@@ -169,6 +170,11 @@ void Gameplay::Load( const std::string& levelName )
 		case 'e': // Like tEleporter.
 			levelObjects[int( LevelObject::Type::Teleporter )].emplace_back(
 				std::make_unique<Teleporter>( pos ) );
+			floorVal = 1;
+			break;
+		case 'n': // eNemy.
+			levelObjects[int( LevelObject::Type::Enemy )].emplace_back(
+				std::make_unique<Enemy>( pos ) );
 			floorVal = 1;
 			break;
 		case '\n':

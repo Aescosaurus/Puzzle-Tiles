@@ -12,6 +12,7 @@
 #include "StepGate.h"
 #include "Turret.h"
 #include "Teleporter.h"
+#include "Enemy.h"
 
 class Gameplay
 {

@@ -5,6 +5,7 @@
 #include <memory>
 #include "Keyboard.h"
 #include "Timer.h"
+#include "Level.h"
 
 class LevelObject;
 typedef std::vector<std::unique_ptr<LevelObject>> PLevelObjectArr;
@@ -21,6 +22,7 @@ public:
 		StepGate,
 		Turret,
 		Teleporter,
+		Enemy,
 		Max
 	};
 public:
@@ -29,6 +31,7 @@ public:
 	public:
 		const Keyboard& kbd;
 		float dt;
+		Level& level;
 		LevelObject& player;
 		LevelObject& door;
 		std::vector<PLevelObjectArr>& levelObjects;
