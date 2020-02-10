@@ -15,4 +15,5 @@ private:
 	static constexpr ColorStyle style = { Colors::MakeRGB( 120,30,230 ),20 };
 	int dir = 1;
 	Vei2 playerPos = Vei2::Zero();
+	bool lastTry = false;
 };

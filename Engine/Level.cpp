@@ -96,7 +96,9 @@ void Level::Load( const std::vector<int>& tiles )
 
 Level::TileType Level::GetTile( const Vei2& pos ) const
 {
-	return( tiles[pos.y * size + pos.x].type );
+	const int index = pos.y * size + pos.x;
+	if( index < 0 || index > size * size ) return( TileType::Wall );
+	return( tiles[index].type );
 }
 
 Vei2 Level::GetValidSpot() const

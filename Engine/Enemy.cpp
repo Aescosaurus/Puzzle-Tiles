@@ -9,6 +9,7 @@ void Enemy::Update( UpdateInfo& info )
 {
 	if( info.player.GetPos() != playerPos )
 	{
+		lastTry = false;
 		Update2( info );
 	}
 }
@@ -23,9 +24,10 @@ void Enemy::Update2( UpdateInfo& info )
 	{
 		pos = testPos;
 	}
-	else
+	else if( !lastTry )
 	{
 		dir *= -1;
+		lastTry = true;
 		Update2( info );
 	}
 }
