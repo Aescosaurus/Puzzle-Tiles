@@ -76,8 +76,9 @@ void Gameplay::Update()
 	}
 
 	// TODO: More levels.
+	// TODO: Auto shooters have light indicating direction.
+	// TODO: That goes for turrets too.
 	// TODO: Player can loop across sides and top/bot of screen.
-	// TODO: Something that automatically shoots arrows.
 	// TODO: Lanterns that turn off when you hit them again.
 	// TODO: Above but with different light pattern.
 	// TODO: Slow fade in from black on level start.
@@ -175,6 +176,11 @@ void Gameplay::Load( const std::string& levelName )
 		case 'n': // eNemy.
 			levelObjects[int( LevelObject::Type::Enemy )].emplace_back(
 				std::make_unique<Enemy>( pos ) );
+			floorVal = 1;
+			break;
+		case 'a':
+			levelObjects[int( LevelObject::Type::AutoShooter )].emplace_back(
+				std::make_unique<AutoShooter>( pos ) );
 			floorVal = 1;
 			break;
 		case '\n':

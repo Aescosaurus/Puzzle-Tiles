@@ -137,6 +137,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Arrow.h" />
+    <ClInclude Include="AutoShooter.h" />
     <ClInclude Include="ChiliException.h" />
     <ClInclude Include="ChiliUtils.h" />
     <ClInclude Include="ChiliWin.h" />
@@ -175,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="AutoShooter.cpp" />
     <ClCompile Include="ColorMap.cpp" />
     <ClCompile Include="COMInitializer.cpp" />
     <ClCompile Include="Door.cpp" />

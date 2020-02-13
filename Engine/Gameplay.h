@@ -13,6 +13,7 @@
 #include "Turret.h"
 #include "Teleporter.h"
 #include "Enemy.h"
+#include "AutoShooter.h"
 
 class Gameplay
 {

@@ -23,6 +23,7 @@ public:
 		Turret,
 		Teleporter,
 		Enemy,
+		AutoShooter,
 		Max
 	};
 public:
