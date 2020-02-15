@@ -29,6 +29,7 @@ Game::Game( MainWindow& wnd )
 	levelEditor( wnd.kbd,wnd.mouse )
 {
 #if NDEBUG
+	wnd.Maximize();
 	gameState = State::Gameplay;
 #endif
 }
@@ -45,6 +46,15 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	if( wnd.kbd.KeyIsPressed( VK_ESCAPE ) && wnd.IsFullscreen() )
+	{
+		wnd.Minimize();
+	}
+	if( wnd.kbd.KeyIsPressed( 'F' ) )
+	{
+		wnd.Maximize();
+	}
+
 	switch( gameState )
 	{
 	case State::Menu:
