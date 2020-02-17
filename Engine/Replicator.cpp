@@ -20,6 +20,7 @@ void Replicator::Update( UpdateInfo& info )
 					pos,dirs[i] ) );
 				arrowArr.back()->SetPos( arrowArr.back()->GetPos() + dirs[i] );
 			}
+			hitSound->Play();
 			break;
 		}
 	}
