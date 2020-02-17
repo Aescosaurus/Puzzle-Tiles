@@ -41,6 +41,9 @@ void Lantern::Draw( TileMap& map ) const
 
 void Lantern::Light( UpdateInfo& info )
 {
+	if( !lit ) alreadyHitSound->Play();
+	else hitSound->Play();
+
 	lit = true;
 
 	static constexpr int radSq = lightRadius * lightRadius;
