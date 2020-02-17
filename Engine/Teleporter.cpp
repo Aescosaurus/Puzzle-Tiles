@@ -17,9 +17,11 @@ void Teleporter::Update( UpdateInfo& info )
 			// for( int i = 0; i < int( teleporters.size() ); ++i )
 			for( int i = 0; i < int( teleporters.size() ); ++i )
 			{
+				assert( i < int( hitSounds.size() ) ); // For sound stuff.
 				const auto& tele = teleporters[i];
 				if( tele.get() == this )
 				{
+					hitSounds[i]->Play();
 					++i;
 					if( i >= int( teleporters.size() ) ) i = 0;
 					arrow->SetPos( teleporters[i]->GetPos() );

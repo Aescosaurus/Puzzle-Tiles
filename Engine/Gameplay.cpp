@@ -13,7 +13,7 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 {
 #if !NDEBUG
 	// Skips to latest level.
-	while( true )
+	while( true && curLevel < 30 )
 	{
 		++curLevel;
 		std::ifstream in{ GenerateLevelName() };
