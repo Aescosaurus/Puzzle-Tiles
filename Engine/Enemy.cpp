@@ -7,6 +7,14 @@ Enemy::Enemy( const Vei2& pos )
 
 void Enemy::Update( UpdateInfo& info )
 {
+	for( auto& arrow : info.levelObjects[int( Type::Arrow )] )
+	{
+		if( arrow->GetPos() == pos )
+		{
+			hitSound->Play();
+		}
+	}
+
 	if( info.player.GetPos() != playerPos )
 	{
 		lastTry = false;

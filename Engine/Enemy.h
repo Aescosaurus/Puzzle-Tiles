@@ -1,6 +1,7 @@
 #pragma once
 
 #include "LevelObject.h"
+#include "Codex.h"
 
 class Enemy
 	:
@@ -16,4 +17,5 @@ private:
 	int dir = 1;
 	Vei2 playerPos = Vei2::Zero();
 	bool lastTry = false;
+	CSoundPtr hitSound = SoundCodex::Fetch( "Sounds/EnemyHit.wav" );
 };
