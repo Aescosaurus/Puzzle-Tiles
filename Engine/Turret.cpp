@@ -20,6 +20,8 @@ void Turret::Update( UpdateInfo& info )
 			// Rotate direction right.
 			dir.y *= -1;
 			std::swap( dir.x,dir.y );
+			hitSounds[curSound++]->Play();
+			if( curSound > 3 ) curSound = 0;
 			break;
 		}
 	}

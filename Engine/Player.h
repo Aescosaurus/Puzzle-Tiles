@@ -37,8 +37,9 @@ private:
 	// Timer refire = 0.45f;
 	bool canMove = false;
 	bool canShoot = false;
-	static constexpr int nStepSounds = 3;
-	CSoundPtr stepSounds[nStepSounds] =
+	// static constexpr int nStepSounds = 3;
+	// CSoundPtr stepSounds[nStepSounds] =
+	std::vector<CSoundPtr> stepSounds =
 	{
 		SoundCodex::Fetch( "Sounds/PlayerStep1.wav" ),
 		SoundCodex::Fetch( "Sounds/PlayerStep2.wav" ),

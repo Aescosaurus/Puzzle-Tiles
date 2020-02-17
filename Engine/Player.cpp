@@ -25,7 +25,7 @@ void Player::Update( UpdateInfo& info )
 			if( vel.x != 0 ) pos += vel.X();
 			else pos += vel.Y();
 
-			stepSounds[int( Random{ 0,nStepSounds - 1 } )]->Play();
+			stepSounds[int( Random{ 0,int( stepSounds.size() ) - 1 } )]->Play();
 		}
 		else if( canMove )
 		{
