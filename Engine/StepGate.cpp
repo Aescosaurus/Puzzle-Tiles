@@ -23,15 +23,18 @@ void StepGate::Update( UpdateInfo& info )
 				gatePos == pos + Vei2::Right() )
 			{
 				isTrigger = false;
+				if( playerPos != oldPlayerPos ) hitSound->Play();
 				break;
 			}
 		}
 		if( isTrigger )
 		{
+			openSound->Play();
 			for( auto& gate : info.levelObjects[int( Type::StepGate )] )
 			{
 				gate->Destroy();
 			}
 		}
 	}
+	oldPlayerPos = info.player.GetPos();
 }
