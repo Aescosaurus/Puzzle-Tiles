@@ -17,16 +17,23 @@ void Player::Update( UpdateInfo& info )
 	else if( info.kbd.KeyIsPressed( 'A' ) ) --vel.x;
 	else if( info.kbd.KeyIsPressed( 'D' ) ) ++vel.x;
 
-	if( vel != Vei2::Zero() )
+	if( vel != Vei2::Zero() &&
+		( vel.x == 0 || vel.y == 0 ) )
 	{
 		if( CanMove( pos + vel,info ) )
 		{
 			if( vel.x != 0 ) pos += vel.X();
 			else pos += vel.Y();
-			canMove = false;
+
+			stepSounds[int( Random{ 0,nStepSounds - 1 } )]->Play();
 		}
+		else if( canMove )
+		{
+			wallBumpSound->Play();
+		}
+		canMove = false;
 	}
-	else
+	else if( vel == Vei2::Zero() )
 	{
 		canMove = true;
 	}
