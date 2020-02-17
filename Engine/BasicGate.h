@@ -2,6 +2,7 @@
 
 #include "LevelObject.h"
 #include "ColorStyle.h"
+#include "Codex.h"
 
 // Basic gate requires you to shoot the trigger to open.
 // The trigger is one block of this type with none surrounding it.
@@ -21,4 +22,6 @@ private:
 		{ Colors::MakeRGB( 255,87,243 ),20 },
 		{ Colors::MakeRGB( 135,12,232 ),20 }
 	};
+	CSoundPtr openSound = SoundCodex::Fetch( "Sounds/BasicGateOpen.wav" );
+	CSoundPtr hitSound = SoundCodex::Fetch( "Sounds/BasicGateHit.wav" );
 };

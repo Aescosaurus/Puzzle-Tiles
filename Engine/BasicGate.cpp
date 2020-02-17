@@ -22,11 +22,13 @@ void BasicGate::Update( UpdateInfo& info )
 					gatePos == pos + Vei2::Right() )
 				{
 					isTrigger = false;
+					hitSound->Play( 0.5f );
 					break;
 				}
 			}
 			if( isTrigger )
 			{
+				openSound->Play( 0.8f );
 				// info.levelObjects[int( Type::BasicGate )].clear();
 				for( auto& gate : info.levelObjects[int( Type::BasicGate )] )
 				{
