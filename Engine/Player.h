@@ -46,4 +46,5 @@ private:
 	};
 	CSoundPtr wallBumpSound = SoundCodex::Fetch( "Sounds/PlayerWallBump.wav" );
 	// CSoundPtr objBumpSound = SoundCodex::Fetch( "Sounds/PlayerObjectBump.wav" );
+	CSoundPtr arrowSound = SoundCodex::Fetch( "Sounds/PlayerArrow.wav" );
 };

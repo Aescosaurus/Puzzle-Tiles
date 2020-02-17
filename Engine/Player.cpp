@@ -50,6 +50,8 @@ void Player::Update( UpdateInfo& info )
 			arrows.emplace_back( std::make_unique<Arrow>(
 				pos,shotVel ) );
 			canShoot = false;
+
+			arrowSound->Play( 0.2f );
 		}
 	}
 	else
