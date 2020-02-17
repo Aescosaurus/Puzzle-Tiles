@@ -50,7 +50,7 @@ MainWindow::MainWindow( HINSTANCE hInst,wchar_t * pArgs )
 	// 	WS_OVERLAPPEDWINDOW,
 	// 	wr.left,wr.top,wr.right - wr.left,wr.bottom - wr.top,
 	// 	nullptr,nullptr,hInst,this );
-	hWnd = CreateWindow( wndClassName,L"Chili DirectX Framework",
+	hWnd = CreateWindow( wndClassName,L"Puzzle Tiles",
 		WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU | WS_MAXIMIZEBOX,
 		wr.left,wr.top,wr.right - wr.left,wr.bottom - wr.top,
 		nullptr,nullptr,hInst,this );
