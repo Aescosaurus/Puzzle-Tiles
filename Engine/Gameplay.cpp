@@ -72,6 +72,7 @@ void Gameplay::Update()
 
 	if( guy.GetPos() == door.GetPos() )
 	{
+		exitSound->Play();
 		Load( GenerateLevelName() );
 	}
 

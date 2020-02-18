@@ -37,4 +37,5 @@ private:
 	Door door;
 	int curLevel = 0;
 	bool canAdvanceLevel = false;
+	CSoundPtr exitSound = SoundCodex::Fetch( "Sounds/Door.wav" );
 };
