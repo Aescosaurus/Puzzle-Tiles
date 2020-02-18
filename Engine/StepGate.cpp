@@ -23,7 +23,6 @@ void StepGate::Update( UpdateInfo& info )
 				gatePos == pos + Vei2::Right() )
 			{
 				isTrigger = false;
-				if( playerPos != oldPlayerPos ) hitSound->Play();
 				break;
 			}
 		}
@@ -37,4 +36,12 @@ void StepGate::Update( UpdateInfo& info )
 		}
 	}
 	oldPlayerPos = info.player.GetPos();
+
+	for( const auto& arrow : info.levelObjects[int( Type::Arrow )] )
+	{
+		if( arrow->GetPos() == GetPos() )
+		{
+			hitSound->Play();
+		}
+	}
 }

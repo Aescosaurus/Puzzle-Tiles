@@ -41,8 +41,8 @@ void Lantern::Draw( TileMap& map ) const
 
 void Lantern::Light( UpdateInfo& info )
 {
-	if( !lit ) alreadyHitSound->Play();
-	else hitSound->Play();
+	if( !lit ) hitSound->Play();
+	else alreadyHitSound->Play( 0.7f );
 
 	lit = true;
 

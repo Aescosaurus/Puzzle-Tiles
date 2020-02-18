@@ -27,6 +27,6 @@ private:
 	static constexpr ColorStyle mapStyle = { Colors::MakeRGB( 240,190,110 ),10 };
 	static constexpr ColorStyle tileStyle = { Colors::MakeRGB( 230,100,30 ),10 };
 	ColorMap colMap;
-	CSoundPtr hitSound = SoundCodex::Fetch( "Sounds/LanternHit.wav" );
-	CSoundPtr alreadyHitSound = SoundCodex::Fetch( "Sounds/LanternHitOn.wav" );
+	CSoundPtr hitSound = SoundCodex::Fetch( "Sounds/LanternHitOn.wav" );
+	CSoundPtr alreadyHitSound = SoundCodex::Fetch( "Sounds/LanternHit.wav" );
 };
