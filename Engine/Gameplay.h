@@ -19,11 +19,14 @@ class Gameplay
 {
 public:
 	Gameplay( const Keyboard& kbd,TileMap& tilemap );
+	~Gameplay();
 
 	void Update();
 	void Draw();
 private:
 	void Load( const std::string& levelName );
+	int ReadSave() const;
+	void WriteSave() const;
 	std::string GenerateLevelName() const;
 private:
 	const Keyboard& kbd;

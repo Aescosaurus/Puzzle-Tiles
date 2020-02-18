@@ -11,9 +11,8 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 	guy( Vei2{ 0,0 },level,levelObjects[int( LevelObject::Type::Arrow )] ),
 	door( Vei2{ 0,0 } )
 {
-#if !NDEBUG
-	// Skips to latest level.
-	while( true )
+	const int saveLevel = ReadSave();
+	while( curLevel < saveLevel )
 	{
 		++curLevel;
 		std::ifstream in{ GenerateLevelName() };
@@ -23,10 +22,16 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 			break;
 		}
 	}
-#else
+#if NDEBUG
 	music->Play( 0.2f );
 #endif
 	Load( GenerateLevelName() );
+}
+
+Gameplay::~Gameplay()
+{
+	WriteSave();
+	SoundCodex::Purge(); // Errors happen without this.. :(
 }
 
 void Gameplay::Update()
@@ -200,6 +205,26 @@ void Gameplay::Load( const std::string& levelName )
 	level.Load( tiles );
 
 	++curLevel;
+}
+
+int Gameplay::ReadSave() const
+{
+	std::ifstream in{ "Save/SaveInfo.txt" };
+	assert( in.good() );
+	std::string info = "";
+	for( char c = in.get(); in.good(); c = in.get() )
+	{
+		if( c != '\n' ) info += c;
+	}
+	return( std::stoi( info ) );
+}
+
+void Gameplay::WriteSave() const
+{
+	std::ofstream out{ "Save/SaveInfo.txt" };
+	assert( out.good() );
+	const auto levelStr = std::to_string( curLevel - 1 );
+	out << levelStr;
 }
 
 std::string Gameplay::GenerateLevelName() const
