@@ -23,6 +23,8 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 			break;
 		}
 	}
+#else
+	music->Play( 0.2f );
 #endif
 	Load( GenerateLevelName() );
 }
