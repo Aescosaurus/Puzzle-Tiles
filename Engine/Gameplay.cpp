@@ -30,12 +30,12 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 
 Gameplay::~Gameplay()
 {
-	WriteSave();
 	SoundCodex::Purge(); // Errors happen without this.. :(
 }
 
 void Gameplay::Update()
 {
+#if !NDEBUG
 	if( kbd.KeyIsPressed( VK_RETURN ) )
 	{
 		if( canAdvanceLevel )
@@ -45,6 +45,7 @@ void Gameplay::Update()
 		}
 	}
 	else canAdvanceLevel = true;
+#endif
 
 	if( kbd.KeyIsPressed( 'R' ) )
 	{
@@ -81,9 +82,13 @@ void Gameplay::Update()
 	{
 		exitSound->Play();
 		Load( GenerateLevelName() );
+		WriteSave();
 	}
-
-	// TODO: More levels.
+	
+	// TODO: New lantern sounds.
+	// TODO: Instructions on the sidebars.
+	// TODO: Score based on number of moves?
+	// TODO: Puzzle using arrows to block enemy movement?
 	// TODO: Auto shooters have light indicating direction.
 	// TODO: That goes for turrets too.
 	// TODO: Player can loop across sides and top/bot of screen.
