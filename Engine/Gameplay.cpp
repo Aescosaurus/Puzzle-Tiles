@@ -87,6 +87,9 @@ void Gameplay::Update()
 	
 	// TODO: New lantern sounds.
 	// TODO: Instructions on the sidebars.
+	// TODO: Puzzle requiring shooting through the door.
+	// TODO: Slow fade in from black on the first level.
+
 	// TODO: Score based on number of moves?
 	// TODO: Puzzle using arrows to block enemy movement?
 	// TODO: Auto shooters have light indicating direction.
@@ -94,7 +97,6 @@ void Gameplay::Update()
 	// TODO: Player can loop across sides and top/bot of screen.
 	// TODO: Lanterns that turn off when you hit them again.
 	// TODO: Above but with different light pattern.
-	// TODO: Slow fade in from black on level start.
 
 	const auto isDestroyed = std::mem_fn( &LevelObject::IsDestroyed );
 	for( auto& vec : levelObjects )
