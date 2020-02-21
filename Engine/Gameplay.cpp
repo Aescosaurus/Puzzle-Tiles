@@ -86,10 +86,9 @@ void Gameplay::Update()
 	}
 
 	// For Release:
-	// TODO: New lantern sounds.
-	// TODO: Puzzle requiring shooting through the door.
 	// TODO: Slow fade in from black on the first level.
 	// TODO: Last few levels.
+	// TODO: Controls in the side (img).
 
 	// Maybe in the future:
 	// TODO: Instructions on the sidebars (left click/h for help).
