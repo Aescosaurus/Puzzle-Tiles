@@ -42,4 +42,5 @@ private:
 	bool canAdvanceLevel = false;
 	CSoundPtr exitSound = SoundCodex::Fetch( "Sounds/Door.wav" );
 	CSoundPtr music = SoundCodex::Fetch( "Sounds/Puzzle01.wav" );
+	Timer fadeIn = 1.0f;
 };

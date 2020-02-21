@@ -35,6 +35,7 @@ Gameplay::~Gameplay()
 
 void Gameplay::Update()
 {
+	if( kbd.KeyIsPressed( 'E' ) ) fadeIn.Reset();
 #if !NDEBUG
 	if( kbd.KeyIsPressed( VK_RETURN ) )
 	{
@@ -86,7 +87,6 @@ void Gameplay::Update()
 	}
 
 	// For Release:
-	// TODO: Slow fade in from black on the first level.
 	// TODO: Last few levels.
 	// TODO: Controls in the side (img).
 
@@ -105,6 +105,8 @@ void Gameplay::Update()
 	{
 		chili::remove_erase_if( vec,isDestroyed );
 	}
+
+	fadeIn.Update( dt );
 }
 
 void Gameplay::Draw()
@@ -121,6 +123,18 @@ void Gameplay::Draw()
 	}
 
 	door.Draw( tilemap );
+
+	if( !fadeIn.IsDone() )
+	{
+		for( int y = 0; y < TileMap::size; ++y )
+		{
+			for( int x = 0; x < TileMap::size; ++x )
+			{
+				tilemap.PutLightNoInterp( x,y,Colors::Black,
+					fadeIn.GetPercent() * TileMap::globalBrightness );
+			}
+		}
+	}
 }
 
 void Gameplay::Load( const std::string& levelName )

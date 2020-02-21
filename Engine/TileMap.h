@@ -13,6 +13,7 @@ public:
 
 	void PutPixel( int x,int y,Color c );
 	void PutLight( int x,int y,Color c,float val );
+	void PutLightNoInterp( int x,int y,Color c,float val );
 	// void DrawLightRect( int x,int y,int width,int height,Color c,float val );
 	// void DrawLightCircle( int x,int y,int size,const ColorStyle& cs );
 	void Reset();
@@ -22,8 +23,8 @@ public:
 	static constexpr int size = 20;
 	static constexpr int tileSize = Graphics::ScreenHeight / size;
 	static constexpr int padding = ( Graphics::ScreenWidth - tileSize * size ) / 2;
-private:
 	static constexpr float globalBrightness = 0.5f;
+private:
 	std::vector<Color> tiles;
 	std::vector<std::pair<Color,float>> lightMap;
 };

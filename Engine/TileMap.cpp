@@ -68,6 +68,19 @@ void TileMap::PutLight( int x,int y,Color c,float val )
 	}
 }
 
+void TileMap::PutLightNoInterp( int x,int y,Color c,float val )
+{
+	if( x >= 0 && x < size &&
+		y >= 0 && y < size &&
+		val > 0.0f )
+	{
+		assert( val <= 1.0f );
+		auto& item = lightMap[y * size + x];
+		item.first = c;
+		item.second = val;
+	}
+}
+
 // void TileMap::DrawLightRect( int x,int y,int width,int height,Color c,float val )
 // {
 // 	for( int yy = y; yy < y + height; ++yy )
