@@ -84,12 +84,15 @@ void Gameplay::Update()
 		Load( GenerateLevelName() );
 		WriteSave();
 	}
-	
+
+	// For Release:
 	// TODO: New lantern sounds.
-	// TODO: Instructions on the sidebars.
 	// TODO: Puzzle requiring shooting through the door.
 	// TODO: Slow fade in from black on the first level.
+	// TODO: Last few levels.
 
+	// Maybe in the future:
+	// TODO: Instructions on the sidebars (left click/h for help).
 	// TODO: Score based on number of moves?
 	// TODO: Puzzle using arrows to block enemy movement?
 	// TODO: Auto shooters have light indicating direction.
@@ -216,6 +219,9 @@ void Gameplay::Load( const std::string& levelName )
 
 int Gameplay::ReadSave() const
 {
+#if !NDEBUG
+	return( 99999 ); // Skip to latest level in debug mode.
+#else
 	std::ifstream in{ "Save/SaveInfo.txt" };
 	assert( in.good() );
 	std::string info = "";
@@ -224,6 +230,7 @@ int Gameplay::ReadSave() const
 		if( c != '\n' ) info += c;
 	}
 	return( std::stoi( info ) );
+#endif
 }
 
 void Gameplay::WriteSave() const
