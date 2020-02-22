@@ -56,5 +56,6 @@ private:
 	Gameplay gameplay;
 	LevelEditor levelEditor;
 	State gameState = State::Menu;
+	const Surface tutSpr = "Images/Instructions.bmp";
 	/********************************/
 };

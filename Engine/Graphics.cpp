@@ -361,6 +361,21 @@ void Graphics::DrawRectAlpha( int x,int y,int width,int height,
 	}
 }
 
+void Graphics::DrawSprite( int x,int y,const Surface& s )
+{
+	for( int sy = 0; sy < s.GetHeight(); ++sy )
+	{
+		for( int sx = 0; sx < s.GetWidth(); ++sx )
+		{
+			const auto pixel = s.GetPixel( sx,sy );
+			if( pixel != Colors::Magenta )
+			{
+				PutPixel( x + sx,y + sy,pixel );
+			}
+		}
+	}
+}
+
 
 //////////////////////////////////////////////////
 //           Graphics Exception

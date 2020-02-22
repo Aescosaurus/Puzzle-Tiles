@@ -88,7 +88,6 @@ void Gameplay::Update()
 
 	// For Release:
 	// TODO: Last few levels.
-	// TODO: Controls in the side (img).
 
 	// Maybe in the future:
 	// TODO: Instructions on the sidebars (left click/h for help).

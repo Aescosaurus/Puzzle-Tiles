@@ -84,6 +84,7 @@ void Game::ComposeFrame()
 		break;
 	case State::Gameplay:
 		gameplay.Draw();
+		gfx.DrawSprite( 10,10,tutSpr );
 		break;
 	case State::LevelEditor:
 		levelEditor.Draw( tilemap );

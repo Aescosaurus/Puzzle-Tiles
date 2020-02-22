@@ -166,6 +166,7 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Replicator.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Surface.h" />
     <ClInclude Include="Teleporter.h" />
     <ClInclude Include="Turret.h" />
     <ClInclude Include="Sound.h" />
@@ -198,6 +199,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Replicator.cpp" />
+    <ClCompile Include="Surface.cpp" />
     <ClCompile Include="Teleporter.cpp" />
     <ClCompile Include="Turret.cpp" />
     <ClCompile Include="Sound.cpp" />

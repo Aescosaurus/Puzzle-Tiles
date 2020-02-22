@@ -14,6 +14,7 @@
 #include "Teleporter.h"
 #include "Enemy.h"
 #include "AutoShooter.h"
+#include "Surface.h"
 
 class Gameplay
 {
