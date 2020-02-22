@@ -86,9 +86,6 @@ void Gameplay::Update()
 		WriteSave();
 	}
 
-	// For Release:
-	// TODO: Last few levels.
-
 	// Maybe in the future:
 	// TODO: Instructions on the sidebars (left click/h for help).
 	// TODO: Score based on number of moves?
