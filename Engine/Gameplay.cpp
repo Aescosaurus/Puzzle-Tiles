@@ -50,9 +50,14 @@ void Gameplay::Update()
 
 	if( kbd.KeyIsPressed( 'R' ) )
 	{
-		--curLevel;
-		Load( GenerateLevelName() );
+		if( canPressR )
+		{
+			--curLevel;
+			Load( GenerateLevelName() );
+		}
+		canPressR = false;
 	}
+	else canPressR = true;
 
 	const auto dt = ft.Mark();
 	updateInfo.dt = dt;

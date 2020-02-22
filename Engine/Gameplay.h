@@ -47,4 +47,5 @@ private:
 	// CSoundPtr music = SoundCodex::Fetch( "Sounds/Puzzle01.wav" );
 	Sound music = Sound{ L"Sounds/Puzzle01.wav",Sound::LoopType::AutoFullSound };
 	Timer fadeIn = 1.0f;
+	bool canPressR = false;
 };
