@@ -57,5 +57,6 @@ private:
 	LevelEditor levelEditor;
 	State gameState = State::Menu;
 	const Surface tutSpr = "Images/Instructions.bmp";
+	const Surface winSpr = "Images/Congratulations.bmp";
 	/********************************/
 };

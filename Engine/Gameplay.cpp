@@ -23,7 +23,7 @@ Gameplay::Gameplay( const Keyboard& kbd,TileMap& tilemap )
 		}
 	}
 #if NDEBUG
-	music->Play( 0.2f );
+	music.Play( 1.0f,0.2f );
 #endif
 	Load( GenerateLevelName() );
 }
@@ -131,6 +131,11 @@ void Gameplay::Draw()
 			}
 		}
 	}
+}
+
+bool Gameplay::HasWon() const
+{
+	return( curLevel > 50 );
 }
 
 void Gameplay::Load( const std::string& levelName )

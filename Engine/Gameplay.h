@@ -24,6 +24,8 @@ public:
 
 	void Update();
 	void Draw();
+	
+	bool HasWon() const;
 private:
 	void Load( const std::string& levelName );
 	int ReadSave() const;
@@ -42,6 +44,7 @@ private:
 	int curLevel = 0;
 	bool canAdvanceLevel = false;
 	CSoundPtr exitSound = SoundCodex::Fetch( "Sounds/Door.wav" );
-	CSoundPtr music = SoundCodex::Fetch( "Sounds/Puzzle01.wav" );
+	// CSoundPtr music = SoundCodex::Fetch( "Sounds/Puzzle01.wav" );
+	Sound music = Sound{ L"Sounds/Puzzle01.wav",Sound::LoopType::AutoFullSound };
 	Timer fadeIn = 1.0f;
 };

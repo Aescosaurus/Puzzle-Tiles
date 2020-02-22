@@ -85,6 +85,11 @@ void Game::ComposeFrame()
 	case State::Gameplay:
 		gameplay.Draw();
 		gfx.DrawSprite( 10,10,tutSpr );
+		if( gameplay.HasWon() )
+		{
+			gfx.DrawSprite( TileMap::padding + TileMap::size *
+				TileMap::tileSize + 2,10,winSpr );
+		}
 		break;
 	case State::LevelEditor:
 		levelEditor.Draw( tilemap );
