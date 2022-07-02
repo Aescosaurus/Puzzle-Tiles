@@ -1,5 +1,5 @@
 ## Puzzle Tiles
-- First real release (non game jam) on itch.
+- First real release (non game jam) on itch.  Developed over about a month.
 - Top down relaxation puzzle game with tile graphics and cool mechanics.
 - Made using [Chili DirectX Framework](https://github.com/planetchili/chili_framework)
 - SFX probably made in FL Studio (not sure).
